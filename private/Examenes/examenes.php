@@ -1,4 +1,5 @@
-<?php $page_title ='Asignar Examen'; ?>
+<?php $page_title ='Examen';
+$page_subtitle = 'Asignar'; ?>
 <?php require_once('/../Functions/initialize.php'); ?>
 <?php include(SHARED_PATH.'/private_header.php'); ?>
 <?php include(SHARED_PATH.'/private_navigation.php'); ?>

@@ -1,5 +1,6 @@
 
-<?php $page_title ='Confirmar Borrado'; ?>
+<?php $page_title ='Alumnos';
+$page_subtitle='Borrar'; ?>
 <?php  require '../Functions/initialize.php';
 if (!isset($_SESSION['nombre'])) {header('location:'.url_for('public/index.php'));}
 if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.php').'');}

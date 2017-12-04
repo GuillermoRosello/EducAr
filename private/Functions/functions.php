@@ -3,10 +3,14 @@ require_once ('initialize.php');
 function UniqueRandomNumbersWithinRange($min, $max, $quantity) {
     $numbers = range($min, $max);
     shuffle($numbers);
-    return array_slice($numbers, 0, $quantity);}
+    return array_slice($numbers, 0, $quantity);
+}
+
 function redirect_to($location) {
   header("Location: " . $location);
-  exit;}
+  exit;
+}
+
   function url_for($script_path) {
   // add the leading '/' if not present
   if($script_path[0] != '/') {
