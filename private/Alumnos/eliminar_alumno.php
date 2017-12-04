@@ -1,12 +1,5 @@
-<<<<<<< HEAD:private/Alumnos/confirmar_borrado.php
-
 <?php $page_title ='Alumnos';
-$page_subtitle='Borrar'; ?>
-=======
-<?php $page_title ='Alumnos'; ?>
-<!-- Pablo -->
-<?php $page_subtitle ='Eliminar Registro'; ?>
-
+$page_subtitle='Eliminar Registro'; ?>
 <?php  require '../Functions/initialize.php';
 if (!isset($_SESSION['nombre'])) {header('location:'.url_for('public/index.php'));}
 if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.php').'');}
