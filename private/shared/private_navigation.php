@@ -34,5 +34,5 @@
     </div>
     <!-- /.container -->
 </nav>
-<?php if ($page_title!="Examen") { include(SHARED_PATH.'/private_breadcrumbs.php'); }?>
+<?php if ($page_subtitle!="Examen") { include(SHARED_PATH.'/private_breadcrumbs.php'); }?>
 <div class="container">
