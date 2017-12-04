@@ -4,6 +4,10 @@
 <?php require '../private/Functions/initialize.php';?>
 <?php include('shared/public_header.php'); ?>
 <?php include('shared/public_navigation.php'); ?>
+<<<<<<< HEAD
+=======
+<!-- Pablo -->
+>>>>>>> parent of 742a6f0... Merge branch 'master' of https://github.com/GuillermoRosello/EducAr
 <?php $promociones = promociones(); ?>
 <?php $ruta = '/EducAr/public/img/promo/'; ?>
 
