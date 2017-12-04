@@ -1,5 +1,4 @@
 <?php $page_title ='Alumnos'; ?>
-<!-- Pablo -->
 <?php $page_subtitle =''; ?>
 <?php require '../Functions/initialize.php';?>
 <?php if (!isset($_SESSION['nombre'])) {header('location:'.url_for('public/index.php'));}

@@ -1,16 +1,10 @@
-<<<<<<< HEAD
-
-<?php $page_title ='Contacto';
-$page_subtitle = 'Mensaje'; ?>
+<?php $page_title ='Contactos'; ?>
+<?php $page_subtitle ='Mensaje Enviado'; ?>
 <?php  require '../Functions/initialize.php';
 if (!isset($_SESSION['nombre'])) {header('location:'.url_for('public/index.php'));}
 if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.php').'');}?>
-=======
-<?php $page_title ='Contactos'; ?>
-<!-- Pablo -->
-<?php $page_subtitle ='Mensaje Enviado'; ?>
-<?php  require '../Functions/initialize.php';?>
->>>>>>> 9911ede208eda95ec9513fb4dc9476ddec6d16da
+
+
 <?php include(SHARED_PATH.'/private_header.php'); ?>
 <?php include(SHARED_PATH.'/private_navigation.php'); ?>
 <?php include(SHARED_PATH.'/private_sidebar.php'); ?>

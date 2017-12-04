@@ -1,13 +1,16 @@
 <?php $page_title ='Examen';
 $page_subtitle = 'Asignar'; ?>
 <?php require_once('/../Functions/initialize.php'); ?>
+<?php if (!isset($_SESSION['nombre'])) {header('location:'.url_for('public/index.php'));}
+      if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.php').'');}?>
 <?php include(SHARED_PATH.'/private_header.php'); ?>
 <?php include(SHARED_PATH.'/private_navigation.php'); ?>
 <?php include(SHARED_PATH.'/private_sidebar.php'); ?>
 <?php $alumnos = alumnos(); ?>
       <!-- Content Row -->
+      <form action="nuevo_examen.php" method="post">
+      <input type="submit" value="Nuevo Examen" class="btn btn-primary"><br><br>
 
-      <a href="nuevo_examen.php" class="btn btn-primary">Nuevo Examen</a>
                   <!-- Content Column -->
           <div class="col-md-9">
             <table class="display" id="mitabla">
@@ -27,7 +30,7 @@ $page_subtitle = 'Asignar'; ?>
                 <td><?php echo h($alumno['telefono']); ?></td>
                 <td><?php echo h($alumno['email']); ?></td>
                 <td><a href="<?php echo 'editar_alumno.php?id='.$alumno['id_alumnos'];?>" title="Asignar"><span class="glyphicon glyphicon-pencil"></span></a></td>
-				<td><a href="<?php echo 'resultados.php?id='.$alumno['id_alumnos'];?>" title="Resultados"><span class="glyphicon glyphicon-search"></span></a></td>  
+				<td><a href="<?php echo 'resultados.php?id='.$alumno['id_alumnos'];?>" title="Resultados"><span class="glyphicon glyphicon-search"></span></a></td>
               </tr>
             <?php }; ?>
             </tbody>
