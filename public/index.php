@@ -4,13 +4,7 @@
 <?php require '../private/Functions/initialize.php';?>
 <?php include('shared/public_header.php'); ?>
 <?php include('shared/public_navigation.php'); ?>
-<!-- Pablo -->
-<<<<<<< HEAD
-=======
-	
->>>>>>> c8c6c041a3678537f0919a65101b0e70424234c7
 <?php $promociones = promociones(); ?>
-    <!-- Guillermo -->
 <?php $ruta = '/EducAr/public/img/promo/'; ?>
 
     <!-- Page Content -->
