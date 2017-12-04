@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <?php $page_title ='Alumnos';
 $page_subtitle = 'Nuevo';?>
@@ -5,6 +6,12 @@ $page_subtitle = 'Nuevo';?>
 if (!isset($_SESSION['nombre'])) {header('location:'.url_for('public/index.php'));}
 if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.php').'');}
 ?>
+=======
+<?php $page_title ='Alumnos'; ?>
+<!-- Pablo -->
+<?php $page_subtitle ='Nuevo Registro'; ?>
+<?php  require '../Functions/initialize.php';?>
+>>>>>>> 9911ede208eda95ec9513fb4dc9476ddec6d16da
 <?php include(SHARED_PATH.'/private_header.php'); ?>
 <?php include(SHARED_PATH.'/private_navigation.php'); ?>
 <?php include(SHARED_PATH.'/private_sidebar.php'); ?>
@@ -55,17 +62,15 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                             <div id="success"></div>
                             <!-- For success/fail messages -->
                             <!-- Pablo -->
-                            <a href="alumnos.php?page=1" class="btn btn-warning">Regresar</a>
+							<a href="alumnos.php?page=1" class="btn btn-warning">Regresar</a>
                             <!-- Pablo -->
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+							<button type="submit" class="btn btn-primary">Guardar</button>
                         </form>
                     </div>
 
                 </div>
 
             </div>
-
-</div>
 
 <hr>
 <?php include(SHARED_PATH.'/private_footer.php'); ?>

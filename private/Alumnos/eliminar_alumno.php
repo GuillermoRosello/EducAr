@@ -1,6 +1,12 @@
+<<<<<<< HEAD:private/Alumnos/confirmar_borrado.php
 
 <?php $page_title ='Alumnos';
 $page_subtitle='Borrar'; ?>
+=======
+<?php $page_title ='Alumnos'; ?>
+<!-- Pablo -->
+<?php $page_subtitle ='Eliminar Registro'; ?>
+>>>>>>> 9911ede208eda95ec9513fb4dc9476ddec6d16da:private/Alumnos/eliminar_alumno.php
 <?php  require '../Functions/initialize.php';
 if (!isset($_SESSION['nombre'])) {header('location:'.url_for('public/index.php'));}
 if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.php').'');}
@@ -27,7 +33,7 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                             <div class="control-group form-group">
                                 <div class="controls">
                                     <label>Nombre y Apellido / Razon Social:</label>
-                                    <input type="text" class="form-control" value=<?php echo $alumno['nombre']; ?> name="nombre" required data-validation-required-message="Ingrese su Nombre y Apellido.">
+                                    <input type="text" class="form-control" value=<?php echo $alumno['nombre']; ?> name="nombre" readonly>
                                     <p class="help-block"></p>
                                 </div>
                             </div>
@@ -35,21 +41,16 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                             <div class="control-group form-group">
                                 <div class="controls">
                                     <label>Teléfono:</label>
-                                    <input type="tel" class="form-control" value=<?php echo $alumno['telefono']; ?> name="telefono" required data-validation-required-message="Ingrese su número telefónico.">
+                                    <input type="tel" class="form-control" value=<?php echo $alumno['telefono']; ?> name="telefono" readonly>
                                 </div>
                             </div>
                             <div class="control-group form-group">
                                 <div class="controls">
                                     <label>Email:</label>
-                                    <input type="email" class="form-control" value=<?php echo $alumno['email']; ?> name="email" required data-validation-required-message="Ingrese una dirección de Email válida.">
+                                    <input type="email" class="form-control" value=<?php echo $alumno['email']; ?> name="email" readonly>
                                 </div>
                             </div>
-                            <div class="control-group form-group">
-                                <div class="controls">
-                                    <label>Contraseña:</label>
-                                    <input type="password" value=<?php echo $alumno['pass']; ?> name="pass" class="form-control" required>
-                                </div>
-                            </div>
+							<br>
                             <div id="success"></div>
                             <!-- For success/fail messages -->
                             <!-- Pablo -->
