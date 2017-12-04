@@ -62,6 +62,7 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                                       <option value="ADMIN">ADMIN</option>
                                     </select>
                                 </div>
+								<br>
                             </div>
                             <div id="success"></div>
                             <!-- For success/fail messages -->

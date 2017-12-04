@@ -46,7 +46,7 @@
 							<div class="control-group form-group">
                                 <div class="controls">
                                     <label for="imagen">Imagen:</label>
-									<input type="file" name="imagen" size="20" accept="image/*" required><hr>
+									<input type="file" name="imagen" size="20" accept="image/*" required><br>
                                 </div>
 								<div>
 									<image src="<?php echo $ruta.$promocion['img'] ; ?>" height="50%" width="50%"><br>

@@ -5,8 +5,8 @@ function todaslaspreguntas(){
   $result = mysqli_query($db,$sql);
   return $result;
 }
-function preguntas_examen()
-{
+
+function preguntas_examen(){
   require_once ('functions.php');
   $r=0;
   $o=0;
@@ -14,9 +14,7 @@ function preguntas_examen()
   $id_o= array();
   global $db;
   $id = UniqueRandomNumbersWithinRange(1, 30, 10);
-
-  while ($r < 10)
-  {
+  while ($r < 10)  {
     $sql = "SELECT * FROM preguntas ";
     $sql.= "WHERE id_preg='".$id[$r]."'";
     $result_set = mysqli_query($db,$sql);
@@ -24,8 +22,7 @@ function preguntas_examen()
     echo "<li><h3>".$result['id_preg'].') '.$result['preg']."</h3>";
     $id_o = UniqueRandomNumbersWithinRange(1,3,3);
     mysqli_free_result($result_set);
-    while ($o < 3)
-    {
+    while ($o < 3)    {
       $sql = "SELECT * FROM opciones ";
       $sql.= "WHERE id_preg='".$id[$r]."' AND id_opcion='".$id_o[$o]."'";
       $result_set = mysqli_query($db,$sql);
@@ -33,25 +30,22 @@ function preguntas_examen()
       echo "<ul><input type=radio value=".$result['es_resp']." name=Pregunta.".$r." /> ".$result['opcion']." ".$result['es_resp']."</ul>";
       $o=$o+1;
       mysqli_free_result($result_set);
-
     }
     $r=$r+1;
     $o=0;
     echo "</li>";
-
   }
-
 }
 
 // Pablo
 function contacto_web(){
-  global $db;
-  $sql ="SELECT * FROM tb_cform";
-  $result= mysqli_query($db, $sql);
-  return ($result);
-  }
-
-  function buscar_contacto($id) {
+	global $db;
+	$sql ="SELECT * FROM tb_cform";
+	$result= mysqli_query($db, $sql);
+	return ($result);
+	}
+  
+function buscar_contacto($id) {
     global $db;
     $sql = "SELECT * FROM tb_cform ";
     $sql .="WHERE ID='". $id ."'";
@@ -61,27 +55,23 @@ function contacto_web(){
     return($alumnos);
   }
 
-  function cant_contacto_web(){
+  
+function cant_contacto_web(){
     global $db;
     $sql ="SELECT * FROM tb_cform ";
     $result= mysqli_query($db, $sql);
     $number_of_results=mysqli_num_rows($result);
     return ($number_of_results);
     }
-    function alumnos(){
+    
+function alumnos(){
       global $db;
       $sql ='SELECT * FROM alumnos';
       $result= mysqli_query($db, $sql);
       return ($result);
     }
-    function cant_alumnos(){
-      global $db;
-      $sql ="SELECT * FROM alumnos ";
-      $result= mysqli_query($db, $sql);
-      $number_of_results=mysqli_num_rows($result);
-      return ($number_of_results);
-      }
-      function insert_alumno($nombre, $telefono, $email, $pass,$permisos) {
+ 
+function insert_alumno($nombre, $telefono, $email, $pass,$permisos) {
         global $db;
 
         $sql = "INSERT INTO alumnos ";
@@ -104,7 +94,8 @@ function contacto_web(){
           exit;
         }
       }
-      function buscar_alumno($id) {
+      
+function buscar_alumno($id) {
         global $db;
         $sql = "SELECT * FROM alumnos ";
         $sql .="WHERE id_alumnos='". $id ."'";
@@ -114,8 +105,7 @@ function contacto_web(){
         return($alumnos);
       }
 
-
-      function edit_alumno($alumno) {
+function edit_alumno($alumno) {
         global $db;
         $sql = "UPDATE alumnos SET ";
         $sql .= "nombre='".$alumno['nombre']."', ";
@@ -136,20 +126,15 @@ function contacto_web(){
           exit;
         }
       }
-      function promociones(){
+
+function promociones(){
               global $db;
               $sql ="SELECT * FROM promociones";
               $result= mysqli_query($db, $sql);
               return ($result);
             }
-      function cant_promociones(){
-        global $db;
-        $sql = "SELECT * FROM promociones";
-        $result = mysqli_query($db, $sql);
-        $number_of_results=mysqli_num_rows($result);
-        return ($number_of_results);
-      }
-      function delete_alumno($id){
+
+function delete_alumno($id){
         global $db;
         $sql ="DELETE FROM alumnos ";
         $sql .="WHERE id_alumnos='".$id."' ";
@@ -158,7 +143,7 @@ function contacto_web(){
         return($result);
       }
 
-      function login($usuario) {
+function login($usuario) {
         global $db;
         $usuario['email']= stripslashes($usuario['email']);
         $usuario['pass']=stripslashes($usuario['pass']);
@@ -180,7 +165,8 @@ function contacto_web(){
             return(null);
           }
       }
-      function buscar_promocion($id) {
+
+function buscar_promocion($id) {
               global $db;
               $sql = "SELECT * FROM promociones ";
               $sql .="WHERE id='". $id ."'";
