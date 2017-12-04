@@ -5,7 +5,12 @@
 <?php include('shared/public_header.php') ?>
 <?php include('shared/public_navigation.php') ?>
 
-<?php $id=$_GET['id']; ?>
+<?php  if (isset($_GET['id'])) {
+$id=$_GET['id'];
+}
+else {
+  $id=1;
+}?>
 <!-- Pablo -->
 <?php $promocion=buscar_promocion($id); ?>
 <?php $promociones = promociones(); ?>
