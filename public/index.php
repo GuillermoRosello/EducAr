@@ -7,6 +7,7 @@
 <!-- Pablo -->
 	
 <?php $promociones = promociones(); ?>
+    <!-- Guillermo -->
 <?php $ruta = '/EducAr/public/img/promo/'; ?>
 
     <!-- Page Content -->
