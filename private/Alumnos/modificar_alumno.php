@@ -1,4 +1,3 @@
-
 <?php  require '../Functions/initialize.php';
 if (!isset($_SESSION['nombre'])) {header('location:'.url_for('public/index.php'));}
 if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.php').'');}

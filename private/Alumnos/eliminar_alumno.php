@@ -6,7 +6,7 @@ $page_subtitle='Borrar'; ?>
 <?php $page_title ='Alumnos'; ?>
 <!-- Pablo -->
 <?php $page_subtitle ='Eliminar Registro'; ?>
->>>>>>> 9911ede208eda95ec9513fb4dc9476ddec6d16da:private/Alumnos/eliminar_alumno.php
+
 <?php  require '../Functions/initialize.php';
 if (!isset($_SESSION['nombre'])) {header('location:'.url_for('public/index.php'));}
 if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.php').'');}
