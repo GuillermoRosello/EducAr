@@ -4,18 +4,7 @@
 <?php require '../private/Functions/initialize.php';?>
 <?php include('shared/public_header.php'); ?>
 <?php include('shared/public_navigation.php'); ?>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<!-- Pablo -->
->>>>>>> parent of 742a6f0... Merge branch 'master' of https://github.com/GuillermoRosello/EducAr
-=======
-<!-- Pablo -->
-<<<<<<< HEAD
-=======
-	
->>>>>>> c8c6c041a3678537f0919a65101b0e70424234c7
->>>>>>> parent of fc58eb2... sin comentarios
+
 <?php $promociones = promociones(); ?>
     <!-- Guillermo -->
 <?php $ruta = '/EducAr/public/img/promo/'; ?>
