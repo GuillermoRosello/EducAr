@@ -1,7 +1,7 @@
 <?php $page_title ='Promociones'; ?>
 <!-- Pablo -->
 <?php $page_subtitle =''; ?>
-<?php require '/Functions/initialize.php';?>
+<?php require '../private/Functions/initialize.php';?>
 <?php include('shared/public_header.php') ?>
 <?php include('shared/public_navigation.php') ?>
 
@@ -27,20 +27,20 @@
         <!-- /.row -->
 
         <!-- Related Projects Row -->
-			
-			
+
+
 			<div class="row">
 
             <div class="col-lg-12">
                 <h3 class="page-header">Otras Promociones</h3>
             </div>
-				
+
 			<div><?php while($promocion = mysqli_fetch_assoc($promociones)){ ?>
 				<?php if ($promocion['id']!=$id) { ?>
 				<!-- Pablo -->
 				<div class="col-sm-3 col-xs-6">
 			    <a href="<?php echo 'promociones.php?id='.$promocion['id']; ?>">
-					
+
 				<img class="img-responsive img-portfolio img-hover" src="img/promo/<?php echo $promocion['img']; ?>"></a>
 				</div>
 				<?php } }; ?>

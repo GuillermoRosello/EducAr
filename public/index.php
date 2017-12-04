@@ -1,9 +1,12 @@
 <?php $page_title ='Inicio'; ?>
-<?php  require '../private/Functions/initialize.php';?>
-<?php include('shared/public_header.php') ?>
-<?php include('shared/public_navigation.php') ?>
-<?php $promociones = promociones(); ?>
+<!-- Pablo -->
+<?php $page_subtitle =''; ?>
+<?php require '../private/Functions/initialize.php';?>
+<?php include('shared/public_header.php'); ?>
+<?php include('shared/public_navigation.php'); ?>
 
+<?php $promociones = promociones(); ?>
+<?php $ruta = '/EducAr/public/img/promo/'; ?>
 
     <!-- Page Content -->
     <div class="container">
@@ -73,17 +76,19 @@
         </div>
         <!-- /.row -->
 
-        <!-- Portfolio Section -->
+
 		<h2 class="page-header">Promociones</h2>
-			<div class="col-lg-12">
-				<?php while($promocion = mysqli_fetch_assoc($promociones)){ ?>
+
+			<div><?php while($promocion = mysqli_fetch_assoc($promociones)){ ?>
+				<!-- Pablo -->
 				<div class="col-md-4 col-sm-6">
 			    <a href="<?php echo 'promociones.php?id='.$promocion['id']; ?>">
-                    <img class="img-responsive img-portfolio img-hover" alt="" src="img/promo/<?php echo $promocion['img']; ?>">
-                </a>
+
+				<img class="img-responsive img-portfolio img-hover" src="img/promo/<?php echo $promocion['img']; ?>"></a>
 				</div>
-            <?php }; ?>
-        	</div>
+				<?php }; ?>
+			</div>
+
         <!-- /.row -->
 
         <!-- Features Section -->
