@@ -7,7 +7,7 @@ if (is_post_request()) {
   $pass = $_POST['pass'];
   $result=insert_examen($nombre, $telefono, $email, $pass);
       if ($result) {
-    redirect_to(url_for('/private/examenes.php?page=1'));
+    redirect_to(url_for('/private/examenes.php'));
   }
   else {
     echo "Error";
