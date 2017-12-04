@@ -1,13 +1,12 @@
-
-<?php $page_title ='Mensaje Contacto'; ?>
-<?php  require '../Functions/initialize.php';
-if (!isset($_SESSION['nombre'])) {header('location:'.url_for('public/index.php'));}
-if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.php').'');}?>
+<?php $page_title ='Contactos'; ?>
+<!-- Pablo -->
+<?php $page_subtitle ='Mensaje Enviado'; ?>
+<?php  require '../Functions/initialize.php';?>
 <?php include(SHARED_PATH.'/private_header.php'); ?>
 <?php include(SHARED_PATH.'/private_navigation.php'); ?>
 <?php include(SHARED_PATH.'/private_sidebar.php'); ?>
 
-<?php  $id=$_GET['id'];?>
+<?php $id=$_GET['id']; ?>
 <?php $contacto=buscar_contacto($id); ?>
 
 
@@ -19,7 +18,7 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                         <form name="sentMessage" id="contactForm" >
                           <div class="control-group form-group">
                               <div class="controls">
-                                  <input type="hidden" class="form-control" value=<?php echo $contacto['ID']; ?> name="ID" readonly>
+                                  <input type="hidden" class="form-control" value="<?php echo $contacto['ID']; ?>" name="ID" readonly>
                                   <p class="help-block"></p>
                               </div>
                           </div>
@@ -49,9 +48,10 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                                     <textarea rows="6" cols="100" class="form-control" name="message" required data-validation-required-message="Ingrese su mensaje." maxlength="999" style="resize:none" readonly><?php echo $contacto['subj']; ?></textarea>
                                 </div>
                             </div>
-                            <div id="success"></div>
+                            <br>
+							<div id="success"></div>
                             <!-- For success/fail messages -->
-
+							<a href="contacto.php" class="btn btn-warning">Regresar</a>
                         </form>
                     </div>
 
