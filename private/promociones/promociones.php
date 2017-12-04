@@ -2,8 +2,6 @@
 <!-- Pablo -->
 <?php $page_subtitle =''; ?>
 <?php require '../Functions/initialize.php';?>
-<?php if (!isset($_SESSION['nombre'])) {header('location:'.url_for('public/index.php'));}
-      if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.php').'');}?>
 <?php include(SHARED_PATH.'/private_header.php'); ?>
 <?php include(SHARED_PATH.'/private_navigation.php'); ?>
 <?php include(SHARED_PATH.'/private_sidebar.php'); ?>
@@ -32,7 +30,9 @@
 				<td><?php echo h($promocion['img']); ?></td>
 				<!-- Pablo -->
 				<td><a href="<?php echo 'editar_promocion.php?id='.$promocion['id'];?>" title="Editar"><span class="glyphicon glyphicon-pencil"></span></a></td>
-		  <!---<td><a href="<?php echo 'borrar_promocion.php?id='.$promocion['id'];?>" title="Borrar"><span class="glyphicon glyphicon-trash"></span></a></td>-->
+		  
+				<!---<td><a href="<?php echo 'borrar_promocion.php?id='.$promocion['id'];?>" title="Borrar"><span class="glyphicon glyphicon-trash"></span></a></td>-->
+				
 				</tr>
 				<?php }; ?>
 			</tbody>

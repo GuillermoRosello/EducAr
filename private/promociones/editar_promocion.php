@@ -38,7 +38,8 @@
                                 <div class="controls">
                                     <!-- Pablo -->
 									<label>Detalle:</label>
-                                    <input type="tel" class="form-control" value="<?php echo $promocion['detalle']; ?>" name="detalle" required data-validation-required-message="Ingrese detalle de la Promoción.">
+                                    <textarea rows="6" cols="100" class="form-control" name="detalle" required data-validation-required-message="Ingrese detalle de la Promoción." maxlength="999" style="resize:none"><?php echo $promocion['detalle']; ?></textarea>
+									
                                 </div>
                             </div>
 							<!-- Pablo -->
