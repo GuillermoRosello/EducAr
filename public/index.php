@@ -5,6 +5,7 @@
 <?php include('shared/public_header.php'); ?>
 <?php include('shared/public_navigation.php'); ?>
 <?php $promociones = promociones(); ?>
+    <!-- Guillermo -->
 <?php $ruta = '/EducAr/public/img/promo/'; ?>
 
     <!-- Page Content -->
