@@ -1,10 +1,15 @@
 
 <?php  require_once('/../Functions/initialize.php');;
 if (is_post_request()) {
-  $nombre = $_POST['nombre'];
-  $telefono = $_POST['telefono'];
-  $email = $_POST['email'];
-  $pass = $_POST['pass'];
+  $tema = $_POST['Tema'];
+  $nombre_examen = $_POST['Nombre Examen'];
+  $i=1
+  while ($i <= 31) {
+    $pregunta = 
+    $Preguntas = $_POST['Pregunta_".$i."'];
+    $Opciones = $_POST['pass'];  # code...
+  }
+
   $result=insert_examen($nombre, $telefono, $email, $pass);
       if ($result) {
     redirect_to(url_for('/private/examenes.php'));
