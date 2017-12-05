@@ -167,7 +167,7 @@ function buscar_promocion($id) {
               return($promociones);
             }
 
-            function insert_examen($tema, $nombre_examen, $preguntas, $respuestas, $opciones) {
+            function insert_examen ($mat_id, $tema_id, $preg_nombre, $opc_puntos, $opcion) {
                     global $db;
                     $sql = "INSERT INTO examen ";
                     $sql .= "(tema, nombre) ";
