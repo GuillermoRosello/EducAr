@@ -27,7 +27,7 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                         <form name="sentMessage" id="contactForm" action="../Alumnos/modificar_alumno.php" method="post" >
                           <div class="control-group form-group">
                               <div class="controls">
-                                  <input type="hidden" class="form-control" value=<?php echo $alumno['alumno_id']; ?> name="alumno_id" >
+                                  <input type="hidden" class="form-control" value=<?php echo $alumno['id_alumnos']; ?> name="id_alumnos" >
                                   <p class="help-block"></p>
                               </div>
                           </div>
