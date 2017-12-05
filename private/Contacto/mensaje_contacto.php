@@ -28,32 +28,32 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                             <div class="control-group form-group">
                                 <div class="controls">
                                     <label>Nombre:</label>
-                                    <input type="text" class="form-control" value=<?php echo $contacto['contacto_nombre']; ?> name="nombre" required data-validation-required-message="Ingrese su Nombre y Apellido." readonly>
+                                    <input type="text" class="form-control" value=<?php echo $contacto['contacto_nombre']; ?> name="nombre"  readonly>
                                     <p class="help-block"></p>
                                 </div>
                             </div>
                             <div class="control-group form-group">
                                 <div class="controls">
                                     <label>Teléfono:</label>
-                                    <input type="tel" class="form-control" value=<?php echo $contacto['contacto_tel']; ?> name="telefono" required data-validation-required-message="Ingrese su número telefónico." readonly>
+                                    <input type="tel" class="form-control" value=<?php echo $contacto['contacto_tel']; ?> name="telefono" readonly>
                                 </div>
                             </div>
                             <div class="control-group form-group">
                                 <div class="controls">
                                     <label>Email:</label>
-                                    <input type="email" class="form-control" value=<?php echo $contacto['contacto_email']; ?> name="email" required data-validation-required-message="Ingrese una dirección de Email válida." readonly>
+                                    <input type="email" class="form-control" value=<?php echo $contacto['contacto_email']; ?> name="email" readonly>
                                 </div>
                             </div>
                             <div class="control-group form-group">
                                 <div class="controls">
                                     <label>Asunto:</label>
-                                    <textarea rows="6" cols="100" class="form-control" name="asunto" required data-validation-required-message="Ingrese su mensaje." maxlength="999" style="resize:none" readonly><?php echo $contacto['contacto_asunto']; ?></textarea>
+									<input type="asunto" class="form-control" value=<?php echo $contacto['contacto_asunto']; ?> name="asunto" readonly>
                                 </div>
                             </div>
 							<div class="control-group form-group">
                                 <div class="controls">
                                     <label>Mensaje:</label>
-                                    <textarea rows="6" cols="100" class="form-control" name="mensaje" required data-validation-required-message="Ingrese su mensaje." maxlength="999" style="resize:none" readonly><?php echo $contacto['contacto_mensaje']; ?></textarea>
+                                    <textarea rows="6" cols="100" class="form-control" name="mensaje" maxlength="999" style="resize:none" readonly><?php echo $contacto['contacto_mensaje']; ?></textarea>
                                 </div>
                             </div>
                             <br>
