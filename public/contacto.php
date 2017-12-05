@@ -62,32 +62,32 @@
                                     <div class="control-group form-group">
                                         <div class="controls">
                                             <label>Nombre y Apellido / Razon Social:</label>
-                                            <input type="text" class="form-control" name="u_name" required data-validation-required-message="Ingrese su Nombre y Apellido.">
+                                            <input type="text" class="form-control" name="contacto_nombre" required data-validation-required-message="Ingrese su Nombre y Apellido.">
                                             <p class="help-block"></p>
                                         </div>
                                     </div>
                                     <div class="control-group form-group">
                                         <div class="controls">
                                             <label>Teléfono:</label>
-                                            <input type="tel" class="form-control" name="phone" required data-validation-required-message="Ingrese su número telefónico.">
+                                            <input type="tel" class="form-control" name="contacto_tel" required data-validation-required-message="Ingrese su número telefónico.">
                                         </div>
                                     </div>
                                     <div class="control-group form-group">
                                         <div class="controls">
                                             <label>Email:</label>
-                                            <input type="email" class="form-control" name="u_email" required data-validation-required-message="Ingrese una dirección de Email válida.">
+                                            <input type="email" class="form-control" name="contacto_email" required data-validation-required-message="Ingrese una dirección de Email válida.">
                                         </div>
                                     </div>
                                     <div class="control-group form-group">
                                         <div class="controls">
                                             <label>Asunto:</label>
-                                            <input type="text" name="subj" class="form-control" required>
+											<input type="test" class="form-control" name="contacto_asunto" required data-validation-required-message="Ingrese un asunto.">
                                         </div>
                                     </div>
                                     <div class="control-group form-group">
                                         <div class="controls">
                                             <label>Mensaje:</label>
-                                            <textarea rows="6" cols="100" class="form-control" name="message" required data-validation-required-message="Ingrese su mensaje." maxlength="999" style="resize:none"></textarea>
+                                            <textarea rows="6" cols="100" class="form-control" name="contacto_mensaje" required data-validation-required-message="Ingrese su mensaje." maxlength="999" style="resize:none"></textarea>
                                         </div>
                                     </div>
                                     <div id="success"></div>

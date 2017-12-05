@@ -28,32 +28,32 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                             <div class="control-group form-group">
                                 <div class="controls">
                                     <label>Nombre:</label>
-                                    <input type="text" class="form-control" value=<?php echo $contacto['contacto_nombre']; ?> name="nombre"  readonly>
+                                    <input type="text" class="form-control" value="<?php echo $contacto['contacto_nombre']; ?>" name="contacto_nombre"  readonly>
                                     <p class="help-block"></p>
                                 </div>
                             </div>
                             <div class="control-group form-group">
                                 <div class="controls">
                                     <label>Teléfono:</label>
-                                    <input type="tel" class="form-control" value=<?php echo $contacto['contacto_tel']; ?> name="telefono" readonly>
+                                    <input type="contacto_tel" class="form-control" value="<?php echo $contacto['contacto_tel']; ?>" name="telefono" readonly>
                                 </div>
                             </div>
                             <div class="control-group form-group">
                                 <div class="controls">
                                     <label>Email:</label>
-                                    <input type="email" class="form-control" value=<?php echo $contacto['contacto_email']; ?> name="email" readonly>
+                                    <input type="contacto_email" class="form-control" value="<?php echo $contacto['contacto_email']; ?>" name="email" readonly>
                                 </div>
                             </div>
                             <div class="control-group form-group">
                                 <div class="controls">
                                     <label>Asunto:</label>
-									<input type="asunto" class="form-control" value=<?php echo $contacto['contacto_asunto']; ?> name="asunto" readonly>
+									<input type="contacto_asunto" class="form-control" value="<?php echo $contacto['contacto_asunto']; ?>" name="asunto" readonly>
                                 </div>
                             </div>
 							<div class="control-group form-group">
                                 <div class="controls">
                                     <label>Mensaje:</label>
-                                    <textarea rows="6" cols="100" class="form-control" name="mensaje" maxlength="999" style="resize:none" readonly><?php echo $contacto['contacto_mensaje']; ?></textarea>
+                                    <textarea rows="6" cols="100" class="form-control" name="contacto_mensaje" maxlength="999" style="resize:none" readonly><?php echo $contacto['contacto_mensaje']; ?></textarea>
                                 </div>
                             </div>
                             <br>
