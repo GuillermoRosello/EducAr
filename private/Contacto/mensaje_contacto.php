@@ -21,7 +21,7 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                         <form name="sentMessage" id="contactForm" >
                           <div class="control-group form-group">
                               <div class="controls">
-                                  <input type="hidden" class="form-control" value="<?php echo $contacto['contacto_id']; ?>" name="ID" readonly>
+                                  <input type="hidden" class="form-control" value="<?php echo $contacto['contacto_id']; ?>" name="contacto_id" readonly>
                                   <p class="help-block"></p>
                               </div>
                           </div>

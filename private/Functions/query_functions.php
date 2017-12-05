@@ -48,21 +48,12 @@ function contacto_web(){
 function buscar_contacto($id) {
     global $db;
     $sql = "SELECT * FROM contactos ";
-    $sql .="WHERE ID='". $id ."'";
+    $sql .="WHERE contacto_id='". $id ."'";
     $result = mysqli_query($db, $sql);
-    $alumnos= mysqli_fetch_assoc($result);
+    $contactos= mysqli_fetch_assoc($result);
     mysqli_free_result($result);
-    return($alumnos);
+    return($contactos);
   }
-
-
-function cant_contacto_web(){
-    global $db;
-    $sql ="SELECT * FROM contactos ";
-    $result= mysqli_query($db, $sql);
-    $number_of_results=mysqli_num_rows($result);
-    return ($number_of_results);
-    }
 
 function alumnos(){
       global $db;
