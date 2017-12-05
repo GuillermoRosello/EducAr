@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-12-2017 a las 04:25:05
+-- Tiempo de generación: 05-12-2017 a las 04:06:02
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `alumnos` (
-  `id_alumnos` int(11) NOT NULL,
+  `alumno_id` int(11) NOT NULL,
   `nombre` text NOT NULL,
   `telefono` text NOT NULL,
   `email` text NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE `alumnos` (
 -- Volcado de datos para la tabla `alumnos`
 --
 
-INSERT INTO `alumnos` (`id_alumnos`, `nombre`, `telefono`, `email`, `pass`, `permisos`) VALUES
+INSERT INTO `alumnos` (`alumno_id`, `nombre`, `telefono`, `email`, `pass`, `permisos`) VALUES
 (2, 'Guillermo', '4615588', 'guillerosello@gmail.com', '12345', 'ADMIN'),
 (7, 'YO', '46518987', 'yo@1234.com', '123', 'ADMIN'),
 (9, 'Guillermo Rosello', '46155588', 'yo@123.com', '123', 'ALUMNO'),
@@ -50,15 +50,49 @@ INSERT INTO `alumnos` (`id_alumnos`, `nombre`, `telefono`, `email`, `pass`, `per
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `examen`
+-- Estructura de tabla para la tabla `contactos`
 --
 
-CREATE TABLE `examen` (
-  `id_exam` int(11) NOT NULL,
-  `tema` int(255) NOT NULL,
-  `nombre` text NOT NULL,
-  `duracion` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `contactos` (
+  `contacto_id` int(4) NOT NULL,
+  `contacto_nombre` varchar(60) COLLATE latin1_spanish_ci NOT NULL,
+  `contacto_email` varchar(60) COLLATE latin1_spanish_ci NOT NULL,
+  `contacto_asunto` varchar(100) COLLATE latin1_spanish_ci NOT NULL,
+  `contacto_mensaje` text COLLATE latin1_spanish_ci NOT NULL,
+  `contacto_tel` varchar(60) COLLATE latin1_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `contactos`
+--
+
+INSERT INTO `contactos` (`contacto_id`, `contacto_nombre`, `contacto_email`, `contacto_asunto`, `contacto_mensaje`, `contacto_tel`) VALUES
+(1, 'Pablo', 'pablonoviello@hotmail.com', 'Prueba', 'Contacto de prueba', ''),
+(2, 'dwfsdfdsfs', 'dsfsdfs@goog.com', 'sfdsfs', 'sfsdfs', ''),
+(3, 'dwfsdfdsfs', 'dsfsdfs@goog.com', 'sfdsfs', 'fdsfsdfsdsadadsa', ''),
+(4, 'Pablo', 'prueba@mail.com', 'Test Full power', 'Campo de texto', ''),
+(9, 'safgsdfg', 'sdfgsdfg@asdfas.asdf', 'sdfgs', 'dfg', ''),
+(13, 'fghjfghj', 'fghjfghj', 'fghjfghj', '', 'fghjfghj'),
+(14, 'fghjfghj', 'fghjfghj', 'fghjfghj', '', 'fghjfghj'),
+(15, 'fghjfghj', 'fghjfghj', 'fghjfghj', '', 'fghjfghj'),
+(16, 'fghjfghj', 'fghjfghj', 'fghjfghj', '', 'fghjfghj'),
+(17, 'fghjfghj', 'fghjfghj', 'fghjfghj', '', 'fghjfghj'),
+(18, 'fghjfghj', 'fghjfghj', 'fghjfghj', '', 'fghjfghj'),
+(19, 'fghjfghj', 'fghjfghj', 'fghjfghj', 'fghjfghj', ''),
+(20, 'fghjfghj', 'fghjfghj', 'fghjfghj', 'sdfsdf', 'sdfsdfsdfsdf'),
+(21, 'fasdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdf'),
+(22, 'fghjgfghj', 'asdfasdf', 'zxcvzxcv', 'bnm,bnm', 'hjklhjkl'),
+(23, 'adsfasdf', 'asdfasdf', 'asdffdasdf@asd.ASD', 'asdfasdfa', 'asdfasdfasdf'),
+(24, 'dfghdfgh', 'fdghdfgh@sdfgsdf.sdfg', 'sdfgasdfg', 'sdfgsdfg', 'dfghdfgh'),
+(25, 'adsfasdf', 'asdffdasdf@asd.ASD', 'asdfasdfa', 'asdfasdfasdf', 'asdfasdf'),
+(26, 'rtyurtyu', 'asdfgadsf@asdf.asdf', 'asdkkljk;''', 'sdfghdfghdfg', 'opyuioyui'),
+(27, 'Nombre', '`sdrfg@asdfas.com', 'sdfgsdfgsdf', 'l.kjhlhjklhjk', 'sdfgsdfgsdfg'),
+(28, '[poasjdp;ohsad', 'dsfgds@sfasdf.asdf', 'dfgsdfg', 'gdsfgsdfgsdfgsdfgsdfgsdf', 'kj;ljdfghjghfd'),
+(29, 'fgsdfgsdf', 'sdfgsdfg@asdfas.asdf', 'sdfghdfgh', 'dfghfdhgjghj', 'fgsdfgsdfg'),
+(30, 'sdfgsd', 'asdffdasdf@asd.ASD', 'zxcvzxcv', 'sdfgdsfgdsfg', 'sdgfsdfg'),
+(31, 'adsfasdf', 'asdfasdf@sadfasd.asdf', 'bnm,bnm', 'sadfsdf', 'dfghd'),
+(34, 'hola', 'asdf@sdfasd.asdf', 'asdfasdf', 'DSFASDFASD', '646546874'),
+(35, 'Prueba', 'prueba@examinar.com', 'prueba', 'prueba', '123456');
 
 -- --------------------------------------------------------
 
@@ -67,10 +101,50 @@ CREATE TABLE `examen` (
 --
 
 CREATE TABLE `examen_alumno` (
-  `id_exam` int(11) NOT NULL,
-  `id_alumnos` int(11) NOT NULL,
-  `fecha` date NOT NULL
+  `examen_id` int(4) NOT NULL,
+  `alumno_id` int(4) NOT NULL,
+  `mat_id` int(4) NOT NULL,
+  `tema_id` int(4) NOT NULL,
+  `examen_fecha` datetime NOT NULL,
+  `examen_nota` tinyint(2) DEFAULT NULL,
+  `estado_id` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `examen_estado`
+--
+
+CREATE TABLE `examen_estado` (
+  `estado_id` tinyint(1) NOT NULL,
+  `estado_examen` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `examen_realizado`
+--
+
+CREATE TABLE `examen_realizado` (
+  `resp_id` int(4) NOT NULL,
+  `examen_id` int(4) NOT NULL,
+  `preg_id` int(4) NOT NULL,
+  `opc_id` int(4) NOT NULL,
+  `opc_puntos` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `materias`
+--
+
+CREATE TABLE `materias` (
+  `mat_id` int(4) NOT NULL,
+  `mat_nombre` varchar(50) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -79,108 +153,12 @@ CREATE TABLE `examen_alumno` (
 --
 
 CREATE TABLE `opciones` (
-  `id_preg` int(11) NOT NULL,
-  `id_opcion` int(90) NOT NULL,
-  `es_resp` tinyint(1) NOT NULL,
-  `opcion` text NOT NULL,
-  `id_exam` int(11) NOT NULL
+  `tema_id` int(4) NOT NULL,
+  `preg_id` int(11) NOT NULL,
+  `opc_id` int(11) NOT NULL,
+  `opcion` varchar(200) NOT NULL,
+  `opc_puntos` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `opciones`
---
-
-INSERT INTO `opciones` (`id_preg`, `id_opcion`, `es_resp`, `opcion`, `id_exam`) VALUES
-(1, 1, 0, 'Opcion1-1', 0),
-(1, 2, 1, 'Opcion1-2', 0),
-(1, 3, 0, 'Opcion1-3', 0),
-(2, 1, 0, 'Opcion2-1', 0),
-(2, 2, 1, 'Opcion2-2', 0),
-(2, 3, 0, 'Opcion2-3', 0),
-(3, 1, 0, 'Opcion3-1', 0),
-(3, 2, 1, 'Opcion3-2', 0),
-(3, 3, 0, 'Opcion3-3', 0),
-(4, 1, 0, 'Opcion4-1', 0),
-(4, 2, 1, 'Opcion4-2', 0),
-(4, 3, 0, 'Opcion4-3', 0),
-(5, 1, 0, 'Opcion5-1', 0),
-(5, 2, 1, 'Opcion5-2', 0),
-(5, 3, 0, 'Opcion5-3', 0),
-(6, 1, 0, 'Opcion6-1', 0),
-(6, 2, 1, 'Opcion6-2', 0),
-(6, 3, 0, 'Opcion6-3', 0),
-(7, 1, 0, 'Opcion7-1', 0),
-(7, 2, 1, 'Opcion7-2', 0),
-(7, 3, 0, 'Opcion7-3', 0),
-(8, 1, 0, 'Opcion8-1', 0),
-(8, 2, 1, 'Opcion8-2', 0),
-(8, 3, 0, 'Opcion8-3', 0),
-(9, 1, 0, 'Opcion9-1', 0),
-(9, 2, 1, 'Opcion9-2', 0),
-(9, 3, 0, 'Opcion9-3', 0),
-(10, 1, 0, 'Opcion10-1', 0),
-(10, 2, 1, 'Opcion10-2', 0),
-(10, 3, 0, 'Opcion10-3', 0),
-(11, 1, 0, 'Opcion11-1', 0),
-(11, 2, 1, 'Opcion11-2', 0),
-(11, 3, 0, 'Opcion11-3', 0),
-(12, 1, 0, 'Opcion12-1', 0),
-(12, 2, 1, 'Opcion12-2', 0),
-(12, 3, 0, 'Opcion12-3', 0),
-(13, 1, 0, 'Opcion13-1', 0),
-(13, 2, 1, 'Opcion13-2', 0),
-(13, 3, 0, 'Opcion13-3', 0),
-(14, 1, 0, 'Opcion14-1', 0),
-(14, 2, 1, 'Opcion14-2', 0),
-(14, 3, 0, 'Opcion14-3', 0),
-(15, 1, 0, 'Opcion15-1', 0),
-(15, 2, 1, 'Opcion15-2', 0),
-(15, 3, 0, 'Opcion15-3', 0),
-(16, 1, 0, 'Opcion16-1', 0),
-(16, 2, 1, 'Opcion16-2', 0),
-(16, 3, 0, 'Opcion16-3', 0),
-(17, 1, 0, 'Opcion17-1', 0),
-(17, 2, 1, 'Opcion17-2', 0),
-(17, 3, 0, 'Opcion17-3', 0),
-(18, 1, 0, 'Opcion18-1', 0),
-(18, 2, 1, 'Opcion18-2', 0),
-(18, 3, 0, 'Opcion18-3', 0),
-(19, 1, 0, 'Opcion19-1', 0),
-(19, 2, 1, 'Opcion19-2', 0),
-(19, 3, 0, 'Opcion19-3', 0),
-(20, 1, 0, 'Opcion20-1', 0),
-(20, 2, 1, 'Opcion20-2', 0),
-(20, 3, 0, 'Opcion20-3', 0),
-(21, 1, 0, 'Opcion21-1', 0),
-(21, 2, 1, 'Opcion21-2', 0),
-(21, 3, 0, 'Opcion21-3', 0),
-(22, 1, 0, 'Opcion22-1', 0),
-(22, 2, 1, 'Opcion22-2', 0),
-(22, 3, 0, 'Opcion22-3', 0),
-(23, 1, 0, 'Opcion23-1', 0),
-(23, 2, 1, 'Opcion23-2', 0),
-(23, 3, 0, 'Opcion23-3', 0),
-(24, 1, 0, 'Opcion24-1', 0),
-(24, 2, 1, 'Opcion24-2', 0),
-(24, 3, 0, 'Opcion24-3', 0),
-(25, 1, 0, 'Opcion25-1', 0),
-(25, 2, 1, 'Opcion25-2', 0),
-(25, 3, 0, 'Opcion25-3', 0),
-(26, 1, 0, 'Opcion26-1', 0),
-(26, 2, 1, 'Opcion26-2', 0),
-(26, 3, 0, 'Opcion26-3', 0),
-(27, 1, 0, 'Opcion27-1', 0),
-(27, 2, 1, 'Opcion27-2', 0),
-(27, 3, 0, 'Opcion27-3', 0),
-(28, 1, 0, 'Opcion28-1', 0),
-(28, 2, 1, 'Opcion28-2', 0),
-(28, 3, 0, 'Opcion28-3', 0),
-(29, 1, 0, 'Opcion29-1', 0),
-(29, 2, 1, 'Opcion29-2', 0),
-(29, 3, 0, 'Opcion29-3', 0),
-(30, 1, 0, 'Opcion30-1', 0),
-(30, 2, 1, 'Opcion30-2', 0),
-(30, 3, 0, 'Opcion30-3', 0);
 
 -- --------------------------------------------------------
 
@@ -189,57 +167,9 @@ INSERT INTO `opciones` (`id_preg`, `id_opcion`, `es_resp`, `opcion`, `id_exam`) 
 --
 
 CREATE TABLE `preguntas` (
-  `id_preg` int(11) NOT NULL,
-  `preg` text CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
-  `id_exam` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `preguntas`
---
-
-INSERT INTO `preguntas` (`id_preg`, `preg`, `id_exam`) VALUES
-(1, '¿De que color era el Caballo Blanco de San Martin?', 0),
-(2, '¿De que color es el cielo?', 0),
-(3, '¿Aprobamos LGI?', 0),
-(4, 'pregunta4', 0),
-(5, 'Pregunta5', 0),
-(6, 'Pregunta6', 0),
-(7, 'Pregunta7', 0),
-(8, 'Pregunta8', 0),
-(9, 'Pregunta9', 0),
-(10, 'Pregunta10', 0),
-(11, 'Pregunta11', 0),
-(12, 'Pregunta12', 0),
-(13, 'Pregunta13', 0),
-(14, 'pregunta 14', 0),
-(15, 'la que faltaba', 0),
-(16, 'Pregunta16', 0),
-(17, 'Pregunta17', 0),
-(18, 'Pregunta18', 0),
-(19, 'Pregunta19', 0),
-(20, 'Pregunta20', 0),
-(21, 'Pregunta21', 0),
-(22, 'Pregunta22', 0),
-(23, 'Pregunta23', 0),
-(24, 'Pregunta24', 0),
-(25, 'Pregunta25', 0),
-(26, 'Pregunta26', 0),
-(27, 'Pregunta27', 0),
-(28, 'Pregunta28', 0),
-(29, 'Pregunta29', 0),
-(30, 'Pregunta 30', 0);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `pregunta_examen`
---
-
-CREATE TABLE `pregunta_examen` (
-  `id_exam` int(11) NOT NULL,
-  `id_preg` int(11) NOT NULL,
-  `tema` int(11) NOT NULL
+  `preg_id` int(4) NOT NULL,
+  `preg_nombre` varchar(50) NOT NULL,
+  `tema_id` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -270,63 +200,14 @@ INSERT INTO `promociones` (`id`, `nombre`, `detalle`, `img`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `respuesta_alumno`
+-- Estructura de tabla para la tabla `temas`
 --
 
-CREATE TABLE `respuesta_alumno` (
-  `id_resp` int(11) NOT NULL,
-  `id_alumnos` int(11) NOT NULL,
-  `id_exam` int(11) NOT NULL,
-  `id_preg` int(11) NOT NULL,
-  `id_opcion` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tb_cform`
---
-
-CREATE TABLE `tb_cform` (
-  `ID` int(11) NOT NULL,
-  `u_name` text COLLATE latin1_spanish_ci NOT NULL,
-  `u_email` text COLLATE latin1_spanish_ci NOT NULL,
-  `subj` text COLLATE latin1_spanish_ci NOT NULL,
-  `message` text COLLATE latin1_spanish_ci NOT NULL,
-  `phone` text COLLATE latin1_spanish_ci NOT NULL
+CREATE TABLE `temas` (
+  `tema_id` int(4) NOT NULL,
+  `tema_nombre` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `mat_id` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
-
---
--- Volcado de datos para la tabla `tb_cform`
---
-
-INSERT INTO `tb_cform` (`ID`, `u_name`, `u_email`, `subj`, `message`, `phone`) VALUES
-(1, 'Pablo', 'pablonoviello@hotmail.com', 'Prueba', 'Contacto de prueba', ''),
-(2, 'dwfsdfdsfs', 'dsfsdfs@goog.com', 'sfdsfs', 'sfsdfs', ''),
-(3, 'dwfsdfdsfs', 'dsfsdfs@goog.com', 'sfdsfs', 'fdsfsdfsdsadadsa', ''),
-(4, 'Pablo', 'prueba@mail.com', 'Test Full power', 'Campo de texto', ''),
-(9, 'safgsdfg', 'sdfgsdfg@asdfas.asdf', 'sdfgs', 'dfg', ''),
-(13, 'fghjfghj', 'fghjfghj', 'fghjfghj', '', 'fghjfghj'),
-(14, 'fghjfghj', 'fghjfghj', 'fghjfghj', '', 'fghjfghj'),
-(15, 'fghjfghj', 'fghjfghj', 'fghjfghj', '', 'fghjfghj'),
-(16, 'fghjfghj', 'fghjfghj', 'fghjfghj', '', 'fghjfghj'),
-(17, 'fghjfghj', 'fghjfghj', 'fghjfghj', '', 'fghjfghj'),
-(18, 'fghjfghj', 'fghjfghj', 'fghjfghj', '', 'fghjfghj'),
-(19, 'fghjfghj', 'fghjfghj', 'fghjfghj', 'fghjfghj', ''),
-(20, 'fghjfghj', 'fghjfghj', 'fghjfghj', 'sdfsdf', 'sdfsdfsdfsdf'),
-(21, 'fasdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdf'),
-(22, 'fghjgfghj', 'asdfasdf', 'zxcvzxcv', 'bnm,bnm', 'hjklhjkl'),
-(23, 'adsfasdf', 'asdfasdf', 'asdffdasdf@asd.ASD', 'asdfasdfa', 'asdfasdfasdf'),
-(24, 'dfghdfgh', 'fdghdfgh@sdfgsdf.sdfg', 'sdfgasdfg', 'sdfgsdfg', 'dfghdfgh'),
-(25, 'adsfasdf', 'asdffdasdf@asd.ASD', 'asdfasdfa', 'asdfasdfasdf', 'asdfasdf'),
-(26, 'rtyurtyu', 'asdfgadsf@asdf.asdf', 'asdkkljk;''', 'sdfghdfghdfg', 'opyuioyui'),
-(27, 'Nombre', '`sdrfg@asdfas.com', 'sdfgsdfgsdf', 'l.kjhlhjklhjk', 'sdfgsdfgsdfg'),
-(28, '[poasjdp;ohsad', 'dsfgds@sfasdf.asdf', 'dfgsdfg', 'gdsfgsdfgsdfgsdfgsdfgsdf', 'kj;ljdfghjghfd'),
-(29, 'fgsdfgsdf', 'sdfgsdfg@asdfas.asdf', 'sdfghdfgh', 'dfghfdhgjghj', 'fgsdfgsdfg'),
-(30, 'sdfgsd', 'asdffdasdf@asd.ASD', 'zxcvzxcv', 'sdfgdsfgdsfg', 'sdgfsdfg'),
-(31, 'adsfasdf', 'asdfasdf@sadfasd.asdf', 'bnm,bnm', 'sadfsdf', 'dfghd'),
-(34, 'hola', 'asdf@sdfasd.asdf', 'asdfasdf', 'DSFASDFASD', '646546874'),
-(35, 'Prueba', 'prueba@examinar.com', 'prueba', 'prueba', '123456');
 
 --
 -- Índices para tablas volcadas
@@ -336,50 +217,47 @@ INSERT INTO `tb_cform` (`ID`, `u_name`, `u_email`, `subj`, `message`, `phone`) V
 -- Indices de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  ADD PRIMARY KEY (`id_alumnos`),
-  ADD UNIQUE KEY `id_alumnos` (`id_alumnos`),
-  ADD UNIQUE KEY `id_alumnos_3` (`id_alumnos`),
-  ADD KEY `id_alumnos_2` (`id_alumnos`),
-  ADD KEY `id_alumnos_4` (`id_alumnos`);
+  ADD PRIMARY KEY (`alumno_id`),
+  ADD UNIQUE KEY `id_alumnos` (`alumno_id`),
+  ADD UNIQUE KEY `id_alumnos_3` (`alumno_id`),
+  ADD KEY `id_alumnos_2` (`alumno_id`),
+  ADD KEY `id_alumnos_4` (`alumno_id`);
 
 --
--- Indices de la tabla `examen`
+-- Indices de la tabla `contactos`
 --
-ALTER TABLE `examen`
-  ADD PRIMARY KEY (`id_exam`),
-  ADD KEY `id_exam` (`id_exam`);
+ALTER TABLE `contactos`
+  ADD PRIMARY KEY (`contacto_id`);
 
 --
 -- Indices de la tabla `examen_alumno`
 --
 ALTER TABLE `examen_alumno`
-  ADD KEY `id_exam` (`id_exam`),
-  ADD KEY `id_alumnos` (`id_alumnos`);
+  ADD PRIMARY KEY (`examen_id`);
 
 --
--- Indices de la tabla `opciones`
+-- Indices de la tabla `examen_estado`
 --
-ALTER TABLE `opciones`
-  ADD KEY `id_preg_2` (`id_preg`),
-  ADD KEY `id_preg` (`id_preg`) USING BTREE,
-  ADD KEY `id_preg_3` (`id_preg`) USING BTREE,
-  ADD KEY `id_opcion` (`id_opcion`),
-  ADD KEY `id_opcion_2` (`id_opcion`);
+ALTER TABLE `examen_estado`
+  ADD PRIMARY KEY (`estado_id`);
+
+--
+-- Indices de la tabla `examen_realizado`
+--
+ALTER TABLE `examen_realizado`
+  ADD PRIMARY KEY (`resp_id`);
+
+--
+-- Indices de la tabla `materias`
+--
+ALTER TABLE `materias`
+  ADD PRIMARY KEY (`mat_id`);
 
 --
 -- Indices de la tabla `preguntas`
 --
 ALTER TABLE `preguntas`
-  ADD PRIMARY KEY (`id_preg`),
-  ADD KEY `id_exam` (`id_exam`);
-
---
--- Indices de la tabla `pregunta_examen`
---
-ALTER TABLE `pregunta_examen`
-  ADD KEY `id_exam` (`id_exam`),
-  ADD KEY `id_preg` (`id_preg`),
-  ADD KEY `tema` (`tema`);
+  ADD PRIMARY KEY (`preg_id`);
 
 --
 -- Indices de la tabla `promociones`
@@ -388,20 +266,10 @@ ALTER TABLE `promociones`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `respuesta_alumno`
+-- Indices de la tabla `temas`
 --
-ALTER TABLE `respuesta_alumno`
-  ADD PRIMARY KEY (`id_resp`),
-  ADD UNIQUE KEY `id_exam` (`id_exam`),
-  ADD UNIQUE KEY `id_opcion` (`id_opcion`),
-  ADD KEY `id_alumnos` (`id_alumnos`),
-  ADD KEY `id_preg` (`id_preg`);
-
---
--- Indices de la tabla `tb_cform`
---
-ALTER TABLE `tb_cform`
-  ADD PRIMARY KEY (`ID`);
+ALTER TABLE `temas`
+  ADD PRIMARY KEY (`tema_id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -411,22 +279,42 @@ ALTER TABLE `tb_cform`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `id_alumnos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `alumno_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT de la tabla `contactos`
+--
+ALTER TABLE `contactos`
+  MODIFY `contacto_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+--
+-- AUTO_INCREMENT de la tabla `examen_alumno`
+--
+ALTER TABLE `examen_alumno`
+  MODIFY `examen_id` int(4) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `examen_realizado`
+--
+ALTER TABLE `examen_realizado`
+  MODIFY `resp_id` int(4) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `materias`
+--
+ALTER TABLE `materias`
+  MODIFY `mat_id` int(4) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `preguntas`
+--
+ALTER TABLE `preguntas`
+  MODIFY `preg_id` int(4) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `promociones`
 --
 ALTER TABLE `promociones`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 --
--- AUTO_INCREMENT de la tabla `respuesta_alumno`
+-- AUTO_INCREMENT de la tabla `temas`
 --
-ALTER TABLE `respuesta_alumno`
-  MODIFY `id_resp` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `tb_cform`
---
-ALTER TABLE `tb_cform`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+ALTER TABLE `temas`
+  MODIFY `tema_id` int(4) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
