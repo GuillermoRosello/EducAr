@@ -40,29 +40,20 @@ function preguntas_examen(){
 // Pablo
 function contacto_web(){
 	global $db;
-	$sql ="SELECT * FROM tb_cform";
+	$sql ="SELECT * FROM contactos";
 	$result= mysqli_query($db, $sql);
 	return ($result);
 	}
 
 function buscar_contacto($id) {
     global $db;
-    $sql = "SELECT * FROM tb_cform ";
-    $sql .="WHERE ID='". $id ."'";
+    $sql = "SELECT * FROM contactos ";
+    $sql .="WHERE contacto_id='". $id ."'";
     $result = mysqli_query($db, $sql);
-    $alumnos= mysqli_fetch_assoc($result);
+    $contactos= mysqli_fetch_assoc($result);
     mysqli_free_result($result);
-    return($alumnos);
+    return($contactos);
   }
-
-
-function cant_contacto_web(){
-    global $db;
-    $sql ="SELECT * FROM tb_cform ";
-    $result= mysqli_query($db, $sql);
-    $number_of_results=mysqli_num_rows($result);
-    return ($number_of_results);
-    }
 
 function alumnos(){
       global $db;
@@ -98,7 +89,7 @@ function insert_alumno($nombre, $telefono, $email, $pass,$permisos) {
 function buscar_alumno($id) {
         global $db;
         $sql = "SELECT * FROM alumnos ";
-        $sql .="WHERE id_alumnos='". $id ."'";
+        $sql .="WHERE alumno_id='". $id ."'";
         $result = mysqli_query($db, $sql);
         $alumnos= mysqli_fetch_assoc($result);
         mysqli_free_result($result);
@@ -113,7 +104,7 @@ function edit_alumno($alumno) {
         $sql .= "email='".$alumno['email']."', ";
         $sql .= "pass='".$alumno['pass']."', ";
         $sql .= "permisos='".$alumno['permisos']."' ";
-        $sql .= "WHERE id_alumnos='".$alumno['id_alumnos']."' ";
+        $sql .= "WHERE alumno_id='".$alumno['alumno_id']."' ";
         $sql .= "LIMIT 1";
         $result = mysqli_query($db, $sql);
         // For INSERT statements, $result is true/false
@@ -137,7 +128,7 @@ function promociones(){
 function delete_alumno($id){
         global $db;
         $sql ="DELETE FROM alumnos ";
-        $sql .="WHERE id_alumnos='".$id."' ";
+        $sql .="WHERE alumno_id='".$id."' ";
         $sql .="LIMIT 1";
         $result=mysqli_query($db,$sql);
         return($result);
@@ -157,7 +148,7 @@ function login($usuario) {
         if (is_array($rows)) {
           $_SESSION['email']=$rows['email'];;
           $_SESSION['nombre']=$rows['nombre'];
-          $_SESSION['id_alumnos']=$rows['id_alumnos'];
+          $_SESSION['alumno_id']=$rows['alumno_id'];
           $_SESSION['permisos']=$rows['permisos'];
           return(true);
         }
