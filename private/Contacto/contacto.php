@@ -12,7 +12,7 @@
               <!-- Pablo -->
 			  <table class="display" id="mitabla">
                 <thead><tr>
-                  <th>ID</th>
+                  <th>Id</th>
                   <th>Nombre</th>
                   <th>Teléfono</th>
                   <th>Email</th>
@@ -22,13 +22,13 @@
 				</thead>
 				
 				<tbody><?php while($contacto = mysqli_fetch_assoc($contactos)){ ?><tr>
-                  <td><?php echo h($contacto['ID']); ?></td>
-                  <td><?php echo h($contacto['u_name']); ?></td>
-                  <td><?php echo h($contacto['phone']); ?></td>
-                  <td><?php echo h($contacto['u_email']); ?></td>
-                  <td><?php echo h($contacto['subj']); ?></td>
+                  <td><?php echo h($contacto['contacto_id']); ?></td>
+                  <td><?php echo h($contacto['contacto_nombre']); ?></td>
+                  <td><?php echo h($contacto['contacto_tel']); ?></td>
+                  <td><?php echo h($contacto['contacto_email']); ?></td>
+                  <td><?php echo h($contacto['contacto_asunto']); ?></td>
 				  <!-- Pablo -->
-                  <td><a class='btn btn-primary' href="<?php echo "mensaje_contacto.php?id=".$contacto['ID']." "; ?>">Ver</a></td>
+                  <td><a class='btn btn-primary' href="<?php echo "mensaje_contacto.php?id=".$contacto['contacto_id']." "; ?>">Ver</a></td>
                 </tr>
               <?php }; ?>
 				</tbody>
