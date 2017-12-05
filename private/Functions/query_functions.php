@@ -44,7 +44,7 @@ function contacto_web(){
 	$result= mysqli_query($db, $sql);
 	return ($result);
 	}
-  
+
 function buscar_contacto($id) {
     global $db;
     $sql = "SELECT * FROM tb_cform ";
@@ -55,7 +55,7 @@ function buscar_contacto($id) {
     return($alumnos);
   }
 
-  
+
 function cant_contacto_web(){
     global $db;
     $sql ="SELECT * FROM tb_cform ";
@@ -63,14 +63,14 @@ function cant_contacto_web(){
     $number_of_results=mysqli_num_rows($result);
     return ($number_of_results);
     }
-    
+
 function alumnos(){
       global $db;
       $sql ='SELECT * FROM alumnos';
       $result= mysqli_query($db, $sql);
       return ($result);
     }
- 
+
 function insert_alumno($nombre, $telefono, $email, $pass,$permisos) {
         global $db;
 
@@ -94,7 +94,7 @@ function insert_alumno($nombre, $telefono, $email, $pass,$permisos) {
           exit;
         }
       }
-      
+
 function buscar_alumno($id) {
         global $db;
         $sql = "SELECT * FROM alumnos ";
@@ -175,6 +175,30 @@ function buscar_promocion($id) {
               mysqli_free_result($result);
               return($promociones);
             }
+
+            function insert_examen($tema, $nombre_examen, $preguntas, $respuestas, $opciones) {
+                    global $db;
+                    $sql = "INSERT INTO examen ";
+                    $sql .= "(tema, nombre) ";
+                    $sql .= "VALUES (";
+                    $sql .= "'" . $tema . "',";
+                    $sql .= "'" . $telefono . "',";
+                    $sql .= "'" . $email . "',";
+                    $sql .= "'" . $pass . "', ";
+                    $sql .= "'" . $permisos . "'";
+                    $sql .= ")";
+                    $result = mysqli_query($db, $sql);
+                    // For INSERT statements, $result is true/false
+                    if($result) {
+                      return true;
+                    } else {
+                      // INSERT failed
+                      echo mysqli_error($db);
+                      db_disconnect($db);
+                      exit;
+                    }
+                  }
+
 /*function preguntas(){
   $resultados=todaslaspreguntas();
   while ($preguntas=mysqli_fetch_assoc($resultados)){
