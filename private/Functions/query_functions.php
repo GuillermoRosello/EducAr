@@ -182,10 +182,7 @@ function buscar_promocion($id) {
                     $sql .= "(tema, nombre) ";
                     $sql .= "VALUES (";
                     $sql .= "'" . $tema . "',";
-                    $sql .= "'" . $telefono . "',";
-                    $sql .= "'" . $email . "',";
-                    $sql .= "'" . $pass . "', ";
-                    $sql .= "'" . $permisos . "'";
+                    $sql .= "'" . $nombre_examen . "'";
                     $sql .= ")";
                     $result = mysqli_query($db, $sql);
                     // For INSERT statements, $result is true/false
