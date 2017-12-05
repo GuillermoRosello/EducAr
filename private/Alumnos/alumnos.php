@@ -32,9 +32,9 @@
 				<td><?php echo h($alumno['email']); ?></td>
 				<td><?php echo h($alumno['permisos']); ?></td>
 				<!-- Pablo -->
-				<td><a href="<?php echo 'editar_alumno.php?id='.$alumno['id_alumnos'];?>" title="Editar"><span class="glyphicon glyphicon-pencil"></span></a></td>
+				<td><a href="<?php echo 'editar_alumno.php?id='.$alumno['alumno_id'];?>" title="Editar"><span class="glyphicon glyphicon-pencil"></span></a></td>
 				<!-- Pablo -->
-				<td><a href="<?php echo 'eliminar_alumno.php?id='.$alumno['id_alumnos'];?>" title="Borrar"><span class="glyphicon glyphicon-trash"></span></a></td>
+				<td><a href="<?php echo 'eliminar_alumno.php?id='.$alumno['alumno_id'];?>" title="Borrar"><span class="glyphicon glyphicon-trash"></span></a></td>
 				</tr>
 				<?php }; ?>
 			</tbody>
