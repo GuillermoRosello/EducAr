@@ -17,21 +17,25 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                         <form name="sentMessage" id="contactForm" action="../Examen/crear_examen.php" method="post" >
                           <div class="control-group form-group">
                               <div class="controls">
-                                  <label>Tema:</label>
-                                  <select name="Tema" class="form-control">
+                                  <label>Materia:</label>
+                                  <select name="mat_nombre" class="form-control">
                                     <option value=""></option>
-                                    <option value="TEMA 1">TEMA 1</option>
-                                    <option value="TEMA 2">TEMA 2</option>
-                                    <option value="TEMA 3">TEMA 3</option>
+                                    <option value="mat_id">TEMA 1</option>
+                                    <option value="mat_id">TEMA 2</option>
+                                    <option value="mat_id">TEMA 3</option>
                                   </select>
                               </div>
                           </div>
                           <hr><br>
-                          <div class='control-group form-group'>
-                              <div class='controls'>
-                                  <label>Nombre de Examen:</label>
-                                  <input type='text' class='form-control' name= 'Nombre Examen' required data-validation-required-message= Ingrese Nombre Examen >
-                                  <p class='help-block'></p>
+                          <div class="control-group form-group">
+                              <div class="controls">
+                                  <label>Tema:</label>
+                                  <select name="Tema" class="form-control">
+                                    <option value=""></option>
+                                    <option value="tema_id">TEMA 1</option>
+                                    <option value="tema_id">TEMA 2</option>
+                                    <option value="tema_id">TEMA 3</option>
+                                  </select>
                               </div>
                           </div>
                           <hr><br>

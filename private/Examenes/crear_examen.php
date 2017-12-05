@@ -1,37 +1,37 @@
 
 <?php  require_once('/../Functions/initialize.php');;
 if (is_post_request()) {
-  $tema = $_POST['Tema'];
-  $nombre_examen = $_POST['Nombre Examen'];
+  $mat_id = $_POST['Materia'];
+  $tema_id = $_POST['Tema'];
   $i=1
   while ($i <= 31) {
     $pregunta = "Pregunta-".$i;
-    $preguntas[] = $_POST[$pregunta];
+    $preg_nombre[] = $_POST[$pregunta];
     $respuesta = "Respuesta-".$i;
     switch ($_POST[$respuesta]) {
       case 1:
-        $respuestas[] = 1;
-        $respuestas[] = 0;
-        $respuestas[] = 0;
+        $opc_puntos[] = 1;
+        $opc_puntos[] = 0;
+        $opc_puntos[] = 0;
         break;
       case 2:
-        $respuestas[] = 0;
-        $respuestas[] = 1;
-        $respuestas[] = 0;
+        $opc_puntos[] = 0;
+        $opc_puntos[] = 1;
+        $opc_puntos[] = 0;
         break;
       case 3:
-        $respuestas[] = 0;
-        $respuestas[] = 0;
-        $respuestas[] = 1;
+        $opc_puntos[] = 0;
+        $opc_puntos[] = 0;
+        $opc_puntos[] = 1;
         break;
     }
     while ($j < 4) {
       $opcion = "Opcion-".$i."-".$j.;
-      $opciones[] = $_POST[$opcion];
+      $opcion[] = $_POST[$opcion];
     }
   }
 }
-  $result=insert_examen($tema, $nombre_examen, $Preguntas, $respuestas, $opciones);
+  $result=insert_examen($mat_id, $tema_id, $preg_nombre, $opc_puntos, $opcion);
       if ($result) {
     redirect_to(url_for('/private/examenes.php'));
   }
