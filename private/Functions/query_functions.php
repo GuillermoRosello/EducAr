@@ -40,20 +40,29 @@ function preguntas_examen(){
 // Pablo
 function contacto_web(){
 	global $db;
-	$sql ="SELECT * FROM contactos";
+	$sql ="SELECT * FROM tb_cform";
 	$result= mysqli_query($db, $sql);
 	return ($result);
 	}
 
 function buscar_contacto($id) {
     global $db;
-    $sql = "SELECT * FROM contactos ";
-    $sql .="WHERE contacto_id='". $id ."'";
+    $sql = "SELECT * FROM tb_cform ";
+    $sql .="WHERE ID='". $id ."'";
     $result = mysqli_query($db, $sql);
-    $contactos= mysqli_fetch_assoc($result);
+    $alumnos= mysqli_fetch_assoc($result);
     mysqli_free_result($result);
-    return($contactos);
+    return($alumnos);
   }
+
+
+function cant_contacto_web(){
+    global $db;
+    $sql ="SELECT * FROM tb_cform ";
+    $result= mysqli_query($db, $sql);
+    $number_of_results=mysqli_num_rows($result);
+    return ($number_of_results);
+    }
 
 function alumnos(){
       global $db;
@@ -89,7 +98,7 @@ function insert_alumno($nombre, $telefono, $email, $pass,$permisos) {
 function buscar_alumno($id) {
         global $db;
         $sql = "SELECT * FROM alumnos ";
-        $sql .="WHERE alumno_id='". $id ."'";
+        $sql .="WHERE id_alumnos='". $id ."'";
         $result = mysqli_query($db, $sql);
         $alumnos= mysqli_fetch_assoc($result);
         mysqli_free_result($result);
@@ -104,7 +113,7 @@ function edit_alumno($alumno) {
         $sql .= "email='".$alumno['email']."', ";
         $sql .= "pass='".$alumno['pass']."', ";
         $sql .= "permisos='".$alumno['permisos']."' ";
-        $sql .= "WHERE alumno_id='".$alumno['alumno_id']."' ";
+        $sql .= "WHERE id_alumnos='".$alumno['id_alumnos']."' ";
         $sql .= "LIMIT 1";
         $result = mysqli_query($db, $sql);
         // For INSERT statements, $result is true/false
@@ -128,7 +137,7 @@ function promociones(){
 function delete_alumno($id){
         global $db;
         $sql ="DELETE FROM alumnos ";
-        $sql .="WHERE alumno_id='".$id."' ";
+        $sql .="WHERE id_alumnos='".$id."' ";
         $sql .="LIMIT 1";
         $result=mysqli_query($db,$sql);
         return($result);
@@ -148,7 +157,7 @@ function login($usuario) {
         if (is_array($rows)) {
           $_SESSION['email']=$rows['email'];;
           $_SESSION['nombre']=$rows['nombre'];
-          $_SESSION['alumno_id']=$rows['alumno_id'];
+          $_SESSION['id_alumnos']=$rows['id_alumnos'];
           $_SESSION['permisos']=$rows['permisos'];
           return(true);
         }
@@ -169,11 +178,24 @@ function buscar_promocion($id) {
 
             function insert_examen ($mat_id, $tema_id, $preg_nombre, $opc_puntos, $opcion) {
                     global $db;
-                    $sql = "INSERT INTO examen ";
-                    $sql .= "(tema, nombre) ";
+                    $sql = "INSERT INTO preguntas ";
+                    $sql .= "(preg_nombre, tema_id) ";
                     $sql .= "VALUES (";
-                    $sql .= "'" . $tema . "',";
-                    $sql .= "'" . $nombre_examen . "'";
+                    $sql .= "'" . $preg_nombre . "',";
+                    $sql .= "'" . $tema_id . "'";
+                    $sql .= ")";
+                    $result = mysqli_query($db, $sql);
+                    $opc_id[]=1;
+                    $opc_id[]=2;
+                    $opc_id[]=3;
+                    $sql = "INSERT INTO opciones ";
+                    $sql .= "(tema_id, preg_id, opc_id) ";
+                    $sql .= "VALUES (";
+                    $sql .= "'" . $tema_id . "',";
+                    $sql .= "'" . $preg_id . "', ";
+                    $sql .= "'" . $opc_id . "', ";
+                    $sql .= "'" . $opcion . "', ";
+                    $sql .= "'" . $opc_puntos . "', ";
                     $sql .= ")";
                     $result = mysqli_query($db, $sql);
                     // For INSERT statements, $result is true/false
