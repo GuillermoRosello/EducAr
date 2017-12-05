@@ -1,12 +1,12 @@
 <?php
 
 require_once 'initialize.php';
-$name    = $db->real_escape_string($_POST['u_name']);
-$phone   = $db->real_escape_string($_POST['phone']);
-$email   = $db->real_escape_string($_POST['u_email']);
-$subj    = $db->real_escape_string($_POST['subj']);
-$message = $db->real_escape_string($_POST['message']);
-$query   = "INSERT into tb_cform (u_name,u_email,subj,message,phone) VALUES('" . $name . "','" . $email . "','" . $subj . "','" . $message . "','" . $phone . "')";
+$name    = $db->real_escape_string($_POST['contacto_nombre']);
+$phone   = $db->real_escape_string($_POST['contacto_tel']);
+$email   = $db->real_escape_string($_POST['contacto_email']);
+$subj    = $db->real_escape_string($_POST['contacto_asunto']);
+$message = $db->real_escape_string($_POST['contacto_mensaje']);
+$query   = "INSERT into contactos (contacto_nombre,contacto_email,contacto_asunto,contacto_mensaje,contacto_tel) VALUES('" . $name . "','" . $email . "','" . $subj . "','" . $message . "','" . $phone . "')";
 $success = $db->query($query);
 
 if (!$success) {
@@ -22,9 +22,5 @@ else {
   echo '</script>';
   /*header("Location: ../../public/contacto.php");*/
 }
-
-
-
-
 
 ?>
