@@ -26,7 +26,7 @@
 			</thead>
 
 			<tbody><?php while($alumno = mysqli_fetch_assoc($alumnos)){ ?><tr>
-				<td><?php echo h($alumno['alumno_id']); ?></td>
+				<td><?php echo h($alumno['id_alumnos']); ?></td>
 				<td><?php echo h($alumno['nombre']); ?></td>
 				<td><?php echo h($alumno['telefono']); ?></td>
 				<td><?php echo h($alumno['email']); ?></td>
