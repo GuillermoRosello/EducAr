@@ -181,21 +181,22 @@ function buscar_promocion($id) {
                     $sql = "INSERT INTO preguntas ";
                     $sql .= "(preg_nombre, tema_id) ";
                     $sql .= "VALUES (";
-                    $sql .= "'" . $preg_nombre . "',";
-                    $sql .= "'" . $tema_id . "'";
+                    $sql .= "'" . $preg_nombre['preg_nombre'] . "',";
+                    $sql .= "'" . $tema_id['tema_id'] . "'";
                     $sql .= ")";
                     $result = mysqli_query($db, $sql);
-                    $opc_id[]=1;
-                    $opc_id[]=2;
-                    $opc_id[]=3;
+                    $opc_id = array('opc_id' => 1,
+                                    'opc_id' => 2,
+                                    'opc_id' => 3);
+
                     $sql = "INSERT INTO opciones ";
-                    $sql .= "(tema_id, preg_id, opc_id) ";
+                    $sql .= "(tema_id, preg_id, opc_id, opcion, opc_puntos) ";
                     $sql .= "VALUES (";
-                    $sql .= "'" . $tema_id . "',";
-                    $sql .= "'" . $preg_id . "', ";
-                    $sql .= "'" . $opc_id . "', ";
-                    $sql .= "'" . $opcion . "', ";
-                    $sql .= "'" . $opc_puntos . "', ";
+                    $sql .= "'" . $tema_id['tema_id'] . "',";
+                    $sql .= "'1', ";
+                    $sql .= "'" . $opc_id['opc_id'] . "', ";
+                    $sql .= "'" . $opcion['opcion'] . "', ";
+                    $sql .= "'" . $opc_puntos['opc_puntos'] . "'";
                     $sql .= ")";
                     $result = mysqli_query($db, $sql);
                     // For INSERT statements, $result is true/false

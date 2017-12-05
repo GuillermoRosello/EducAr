@@ -14,7 +14,7 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                 <div class="row">
                     <div class="col-md-8">
                         <br>
-                        <form name="sentMessage" id="contactForm" action="../Examen/crear_examen.php" method="post" >
+                        <form name="sentMessage" id="contactForm" action="../Examenes/crear_examen.php" method="post" >
                           <div class="control-group form-group">
                               <div class="controls">
                                   <label>Materia:</label>
@@ -30,7 +30,7 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                           <div class="control-group form-group">
                               <div class="controls">
                                   <label>Tema:</label>
-                                  <select name="Tema" class="form-control">
+                                  <select name="tema_nombre" class="form-control">
                                     <option value=""></option>
                                     <option value="tema_id">TEMA 1</option>
                                     <option value="tema_id">TEMA 2</option>
@@ -41,7 +41,7 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                           <hr><br>
                           <?php
                           $preg = 1;
-                          while ($preg<31) {
+                          while ($preg<2) {
                           echo "
                             <div class='control-group form-group'>
                                 <div class='controls'>
@@ -56,7 +56,7 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                                 <div class='control-group form-group'>
                                     <div class='controls'>
                                         <label><h8>Opcion ".$preg."-".$opc.":</label>
-                                        <input type=radio value='".$opc."' name ='Respuesta".$preg."' 'required data-validation-required-message= Ingrese Respuesta /> ¿ES RESPUESTA?
+                                        <input type=radio value='".$opc."' name ='Respuesta-".$preg."' 'required data-validation-required-message= Ingrese Respuesta /> ¿ES RESPUESTA?
                                         <input type='text' class='form-control' name= 'Opcion-".$preg."-".$opc."' 'required data-validation-required-message= Ingrese Opcion ".$preg."-".$opc."'></h8>
                                         <p class='help-block'></p>
                                     </div>
