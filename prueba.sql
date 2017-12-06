@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-12-2017 a las 04:22:22
+-- Tiempo de generación: 06-12-2017 a las 08:42:01
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -107,8 +107,15 @@ CREATE TABLE `examen_alumno` (
   `tema_id` int(4) NOT NULL,
   `examen_fecha` datetime NOT NULL,
   `examen_nota` tinyint(2) DEFAULT NULL,
-  `estado_id` int(1) NOT NULL
+  `estado_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `examen_alumno`
+--
+
+INSERT INTO `examen_alumno` (`examen_id`, `alumno_id`, `mat_id`, `tema_id`, `examen_fecha`, `examen_nota`, `estado_id`) VALUES
+(1, 2, 1, 1, '2017-12-13 00:00:00', 8, 1);
 
 -- --------------------------------------------------------
 
@@ -118,8 +125,16 @@ CREATE TABLE `examen_alumno` (
 
 CREATE TABLE `examen_estado` (
   `estado_id` tinyint(1) NOT NULL,
-  `estado_examen` varchar(10) NOT NULL
+  `examen_estado` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `examen_estado`
+--
+
+INSERT INTO `examen_estado` (`estado_id`, `examen_estado`) VALUES
+(0, 'Pendiente'),
+(1, 'Finalizado');
 
 -- --------------------------------------------------------
 
@@ -145,6 +160,16 @@ CREATE TABLE `materias` (
   `mat_id` int(4) NOT NULL,
   `mat_nombre` varchar(50) CHARACTER SET latin1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `materias`
+--
+
+INSERT INTO `materias` (`mat_id`, `mat_nombre`) VALUES
+(1, 'PHP'),
+(2, 'MySQL'),
+(3, 'Matematica'),
+(4, 'Fisica');
 
 -- --------------------------------------------------------
 
@@ -342,6 +367,16 @@ CREATE TABLE `temas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
+-- Volcado de datos para la tabla `temas`
+--
+
+INSERT INTO `temas` (`tema_id`, `tema_nombre`, `mat_id`) VALUES
+(1, 'Fracciones', 3),
+(2, 'Consultas', 2),
+(3, 'Prueba', 3),
+(4, 'Cuantica', 4);
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -421,7 +456,7 @@ ALTER TABLE `contactos`
 -- AUTO_INCREMENT de la tabla `examen_alumno`
 --
 ALTER TABLE `examen_alumno`
-  MODIFY `examen_id` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `examen_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `examen_realizado`
 --
@@ -431,7 +466,7 @@ ALTER TABLE `examen_realizado`
 -- AUTO_INCREMENT de la tabla `materias`
 --
 ALTER TABLE `materias`
-  MODIFY `mat_id` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `mat_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `preguntas`
 --
@@ -446,7 +481,7 @@ ALTER TABLE `promociones`
 -- AUTO_INCREMENT de la tabla `temas`
 --
 ALTER TABLE `temas`
-  MODIFY `tema_id` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `tema_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
