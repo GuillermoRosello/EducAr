@@ -223,6 +223,23 @@ function temas(){
       return ($result);
     }
 
+function examen_estado(){
+      global $db;
+      $sql ='SELECT * FROM examen_estado';
+      $result= mysqli_query($db, $sql);
+      return ($result);
+    }
+
+function buscar_examen_estado($id) {
+        global $db;
+        $sql = "SELECT * FROM examen_estado ";
+        $sql .="WHERE estado_id='". $id ."'";
+        $result = mysqli_query($db, $sql);
+        $alumnos= mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        return($alumnos);
+      }
+
 function crear_materia($mat_nombre) {
         global $db;
 

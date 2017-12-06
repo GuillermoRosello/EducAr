@@ -7,9 +7,7 @@ $page_subtitle = 'Asignar'; ?>
 <?php include(SHARED_PATH.'/private_navigation.php'); ?>
 <?php include(SHARED_PATH.'/private_sidebar.php'); ?>
 <?php $examenes_alumnos = examenes_alumnos(); ?>
-<?php $buscar_alumno = buscar_alumno(); ?>
-<?php $buscar_materia = buscar_materia(); ?>
-<?php $buscar_tema = buscar_tema(); ?>
+
       <!-- Content Row -->
       <form action="nuevo_examen.php" method="post">
       <input type="submit" value="Nuevo Examen" class="btn btn-primary"><br><br>
@@ -44,7 +42,12 @@ $page_subtitle = 'Asignar'; ?>
 				<?php $buscar_tema = buscar_tema($examen_alumno['tema_id']); ?>
                 <td><?php echo h($buscar_tema['tema_nombre']); ?></td>
 				  
-                <td><?php echo h($examen_alumno['examen']); ?></td>
+                <td><?php echo h($examen_alumno['examen_fecha']); ?></td>
+				<td><?php echo h($examen_alumno['examen_nota']); ?></td>
+				
+				<?php $buscar_examen_estado = buscar_examen_estado($examen_alumno['estado_id']); ?>
+				<td><?php echo h($buscar_examen_estado['examen_estado']); ?></td>
+				  
                 <td><a href="<?php echo 'asignar_examen.php?id='.$examen_alumno['examen_id'];?>" title="Asignar"><span class="glyphicon glyphicon-pencil"></span></a></td>
 				<td><a href="<?php echo 'resultados.php?id='.$examen_alumno['examen_id'];?>" title="Respuestas"><span class="glyphicon glyphicon-search"></span></a></td>
               </tr>
