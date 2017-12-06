@@ -9,7 +9,7 @@
           <button onClick="window.print()" class="btn btn-primary" >Imprimir</button>
           <form action="resultados.php" method="post">
           <ul>
-          <?php preguntas_examen(0);?>
+          <?php preguntas_examen();?>
           </ul>
       <p><input type=submit name=examen class="btn btn-primary" value=Evaluar /></p>
       </form>
