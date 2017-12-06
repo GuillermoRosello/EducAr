@@ -303,13 +303,12 @@ function buscar_tema($id) {
         return($temas);
       }
 
-function edit_tema($tema) {
+function edit_tema($tema,$materia) {
         global $db;
         $sql = "UPDATE temas SET ";
-
-	    $sql .= "mat_id='".$tema['mat_id']."', ";
-        $sql .= "tema_id='".$tema['tema_id']."', ";
+	    $sql .= "mat_id='".$materia['mat_id']."', ";
         $sql .= "tema_nombre='".$tema['tema_nombre']."' ";
+        $sql .= "WHERE tema_id='".$tema['tema_id']."' ";
         $sql .= "LIMIT 1";
         $result = mysqli_query($db, $sql);
         // For INSERT statements, $result is true/false
