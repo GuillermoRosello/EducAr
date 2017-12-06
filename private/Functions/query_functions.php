@@ -176,7 +176,7 @@ function buscar_promocion($id) {
               return($promociones);
             }
 
-            function insert_examen ($examen) {
+            function insertar_pregunta ($examen) {
                     global $db;
                     $sql = "INSERT INTO preguntas ";
                     $sql .= "(preg_nombre, tema_id) ";
@@ -185,15 +185,16 @@ function buscar_promocion($id) {
                     $sql .= "'" . $examen['tema_id'] . "'";
                     $sql .= ")";
                     $result = mysqli_query($db, $sql);
-                    $examen ['opc_id'] = array( 'opc_id' => 1,
-                                                'opc_id' => 2,
-                                                'opc_id' => 3);
-                    
+            }
+
+            function insertar_opciones ($examen,$opc) {
+              global $db;
+                    $examen['opc_id']=$opc;
                     $sql = "INSERT INTO opciones ";
                     $sql .= "(tema_id, preg_id, opc_id, opcion, opc_puntos) ";
                     $sql .= "VALUES (";
-                    $sql .= "'" . $examen['tema_id'] . "',";
-                    $sql .= "'1', ";
+                    $sql .= "'" . $examen['tema_id'] . "', ";
+                    $sql .= "'". 1 ."', ";
                     $sql .= "'" . $examen['opc_id'] . "', ";
                     $sql .= "'" . $examen['opcion'] . "', ";
                     $sql .= "'" . $examen['opc_puntos'] . "'";
