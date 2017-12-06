@@ -1,5 +1,10 @@
 <?php require_once ('initialize.php');?>
 <?php include(SHARED_PATH.'/private_header.php'); ?>
+<script type="text/javascript">
+  setTimeout(function() {
+  document.getElementById("submit").click();
+}, 10000);
+</script>
 <?php include(SHARED_PATH.'/private_navigation.php'); ?>
   <div class="container">
     <div class="col-lg-12">
@@ -12,6 +17,7 @@
           <?php preguntas_examen(0);?>
           </ul>
       <p><input type=submit name=examen class="btn btn-primary" value=Evaluar /></p>
+          <input type=submit id="submit" name=examen class="btn btn-primary" value=Evaluar formnovalidate style="display: none;">
       </form>
     </div>
   </div>

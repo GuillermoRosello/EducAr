@@ -7,13 +7,14 @@
 $i = 0;
 $resultado = 0;
 //print_r($_POST);
-  if(isset($_POST['examen']) || $_POST['examen'] == 'Evaluar')
+  if(isset($_POST['examen']) || $_POST['examen'] == 'Evaluar' || isset($_POST['ignorar']) || $_POST['ignorar'] == 'Evaluar')
 {
-  if(isset($_POST['Pregunta_0']) && isset($_POST['Pregunta_1']) && isset($_POST['Pregunta_2']) && isset($_POST['Pregunta_3']) && isset($_POST['Pregunta_4']) && isset($_POST['Pregunta_5']) && isset($_POST['Pregunta_6']) && isset($_POST['Pregunta_7']) && isset($_POST['Pregunta_8']) && isset($_POST['Pregunta_9']))
-  {
     while ($i < 10)
     {
       $form = "Pregunta_".$i;
+      if (empty($_POST[$form])) {
+        $_POST[$form]=0;
+      }
       $preguntas = $_POST[$form];
       $resultado = $resultado + $preguntas;
       $i=$i+1;
@@ -58,7 +59,6 @@ $resultado = 0;
 }
 
 
-}
 
 ?>
 </div>

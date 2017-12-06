@@ -6,7 +6,7 @@ function todaslaspreguntas(){
   return $result;
 }
 
-function preguntas_examen($tema){
+/*function preguntas_examen($tema){
   require_once ('functions.php');
   $r=0;
   $o=0;
@@ -35,7 +35,7 @@ function preguntas_examen($tema){
     $o=0;
     echo "</li>";
   }
-}
+}*/
 
 // Pablo
 function contacto_web(){
