@@ -55,13 +55,11 @@ function buscar_contacto($id) {
     return($alumnos);
   }
 
-
-function cant_contacto_web(){
-    global $db;
-    $sql ="SELECT * FROM contactos ";
-    $result= mysqli_query($db, $sql);
-    $number_of_results=mysqli_num_rows($result);
-    return ($number_of_results);
+function examenes_alumnos(){
+      global $db;
+      $sql ='SELECT * FROM examen_alumno';
+      $result= mysqli_query($db, $sql);
+      return ($result);
     }
 
 function alumnos(){

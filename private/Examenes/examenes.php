@@ -6,7 +6,10 @@ $page_subtitle = 'Asignar'; ?>
 <?php include(SHARED_PATH.'/private_header.php'); ?>
 <?php include(SHARED_PATH.'/private_navigation.php'); ?>
 <?php include(SHARED_PATH.'/private_sidebar.php'); ?>
-<?php $alumnos = alumnos(); ?>
+<?php $examenes_alumnos = examenes_alumnos(); ?>
+<?php $buscar_alumno = buscar_alumno(); ?>
+<?php $buscar_materia = buscar_materia(); ?>
+<?php $buscar_tema = buscar_tema(); ?>
       <!-- Content Row -->
       <form action="nuevo_examen.php" method="post">
       <input type="submit" value="Nuevo Examen" class="btn btn-primary"><br><br>
@@ -16,21 +19,34 @@ $page_subtitle = 'Asignar'; ?>
             <table class="display" id="mitabla">
 			<thead>
               <tr>
-                <th>Nombre</th>
-                <th>Telefono</th>
-                <th>Email</th>
+                <th>Id Examen</th>
+                <th>Alumno</th>
+                <th>Materia</th>
+				<th>Tema</th>
+				<th>Fecha</th>
+				<th>Nota</th>
+				<th>Estado</th>
 				<th>Asignar</th>
-				<th>Resultado</th>
+				<th>Respuestas</th>
               </tr>
 			</thead>
 			<tbody>
-            <?php while($alumno = mysqli_fetch_assoc($alumnos)){ ?>
+            <?php while($examen_alumno = mysqli_fetch_assoc($examenes_alumnos)){ ?>
               <tr>
-                <td><?php echo h($alumno['nombre']); ?></td>
-                <td><?php echo h($alumno['telefono']); ?></td>
-                <td><?php echo h($alumno['email']); ?></td>
-                <td><a href="<?php echo 'editar_alumno.php?id='.$alumno['id_alumnos'];?>" title="Asignar"><span class="glyphicon glyphicon-pencil"></span></a></td>
-				<td><a href="<?php echo 'resultados.php?id='.$alumno['id_alumnos'];?>" title="Resultados"><span class="glyphicon glyphicon-search"></span></a></td>
+				<td><?php echo h($examen_alumno['examen_id']); ?></td>
+				  
+				<?php $buscar_alumno = buscar_alumno($examen_alumno['alumno_id']); ?>
+				<td><?php echo h($buscar_alumno['nombre']); ?></td>
+				  
+				<?php $buscar_materia = buscar_materia($examen_alumno['mat_id']); ?>
+                <td><?php echo h($buscar_materia['mat_nombre']); ?></td>
+				
+				<?php $buscar_tema = buscar_tema($examen_alumno['tema_id']); ?>
+                <td><?php echo h($buscar_tema['tema_nombre']); ?></td>
+				  
+                <td><?php echo h($examen_alumno['examen']); ?></td>
+                <td><a href="<?php echo 'asignar_examen.php?id='.$examen_alumno['examen_id'];?>" title="Asignar"><span class="glyphicon glyphicon-pencil"></span></a></td>
+				<td><a href="<?php echo 'resultados.php?id='.$examen_alumno['examen_id'];?>" title="Respuestas"><span class="glyphicon glyphicon-search"></span></a></td>
               </tr>
             <?php }; ?>
             </tbody>
