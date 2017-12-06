@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-
-<?php $page_title ='Alumnos';
-$page_subtitle='Editar'; ?>
-=======
 <?php $page_title ='Alumnos'; ?>
 <!-- Pablo -->
 <?php $page_subtitle ='Editar'; ?>
