@@ -6,7 +6,7 @@ function todaslaspreguntas(){
   return $result;
 }
 
-function preguntas_examen($tema){
+function preguntas_examen(){
   require_once ('functions.php');
   $r=0;
   $o=0;
@@ -16,18 +16,18 @@ function preguntas_examen($tema){
   $id = UniqueRandomNumbersWithinRange(1, 30, 10);
   while ($r < 10)  {
     $sql = "SELECT * FROM preguntas ";
-    $sql.= "WHERE preg_id='".$id[$r]."' AND tema_id='".$tema."'";
+    $sql.= "WHERE id_preg='".$id[$r]."'";
     $result_set = mysqli_query($db,$sql);
     $result = mysqli_fetch_assoc($result_set);
-    echo "<li><h3>".$result['preg_id'].') '.$result['preg_nombre']."</h3>";
+    echo "<li><h3>".$result['id_preg'].') '.$result['preg']."</h3>";
     $id_o = UniqueRandomNumbersWithinRange(1,3,3);
     mysqli_free_result($result_set);
     while ($o < 3)    {
       $sql = "SELECT * FROM opciones ";
-      $sql.= "WHERE preg_id='".$id[$r]."' AND opc_id='".$id_o[$o]."' AND tema_id='".$tema."'";
+      $sql.= "WHERE id_preg='".$id[$r]."' AND id_opcion='".$id_o[$o]."'";
       $result_set = mysqli_query($db,$sql);
       $result = mysqli_fetch_assoc($result_set);
-      echo "<ul><input type=radio value=".$result['opc_puntos']." name=Pregunta.".$r." /> ".$result['opcion']." ".$result['opc_puntos']."</ul>";
+      echo "<ul><input type=radio value=".$result['es_resp']." name=Pregunta.".$r." /> ".$result['opcion']." ".$result['es_resp']."</ul>";
       $o=$o+1;
       mysqli_free_result($result_set);
     }
@@ -36,6 +36,14 @@ function preguntas_examen($tema){
     echo "</li>";
   }
 }
+
+// Pablo
+function contacto_web(){
+	global $db;
+	$sql ="SELECT * FROM contactos";
+	$result= mysqli_query($db, $sql);
+	return ($result);
+	}
 
 function buscar_contacto($id) {
     global $db;
@@ -47,12 +55,45 @@ function buscar_contacto($id) {
     return($alumnos);
   }
 
-function contacto_web(){
-	global $db;
-	$sql ="SELECT * FROM contactos";
-	$result= mysqli_query($db, $sql);
-	return ($result);
-	}
+
+function cant_contacto_web(){
+    global $db;
+    $sql ="SELECT * FROM contactos ";
+    $result= mysqli_query($db, $sql);
+    $number_of_results=mysqli_num_rows($result);
+    return ($number_of_results);
+    }
+
+function alumnos(){
+      global $db;
+      $sql ='SELECT * FROM alumnos';
+      $result= mysqli_query($db, $sql);
+      return ($result);
+    }
+
+function insert_alumno($nombre, $telefono, $email, $pass,$permisos) {
+        global $db;
+
+        $sql = "INSERT INTO alumnos ";
+        $sql .= "(nombre, telefono, email, pass, permisos) ";
+        $sql .= "VALUES (";
+        $sql .= "'" . $nombre . "',";
+        $sql .= "'" . $telefono . "',";
+        $sql .= "'" . $email . "',";
+        $sql .= "'" . $pass . "', ";
+        $sql .= "'" . $permisos . "'";
+        $sql .= ")";
+        $result = mysqli_query($db, $sql);
+        // For INSERT statements, $result is true/false
+        if($result) {
+          return true;
+        } else {
+          // INSERT failed
+          echo mysqli_error($db);
+          db_disconnect($db);
+          exit;
+        }
+      }
 
 function buscar_alumno($id) {
         global $db;
@@ -86,93 +127,17 @@ function edit_alumno($alumno) {
         }
       }
 
+function promociones(){
+              global $db;
+              $sql ="SELECT * FROM promociones";
+              $result= mysqli_query($db, $sql);
+              return ($result);
+            }
+
 function delete_alumno($id){
         global $db;
         $sql ="DELETE FROM alumnos ";
         $sql .="WHERE id_alumnos='".$id."' ";
-        $sql .="LIMIT 1";
-        $result=mysqli_query($db,$sql);
-        return($result);
-      }
-
-function buscar_materia($id) {
-        global $db;
-        $sql = "SELECT * FROM materias ";
-        $sql .="WHERE mat_id='". $id ."'";
-        $result = mysqli_query($db, $sql);
-        $materias= mysqli_fetch_assoc($result);
-        mysqli_free_result($result);
-        return($materias);
-      }
-
-function edit_materia($materia) {
-        global $db;
-        $sql = "UPDATE materias SET ";
-        $sql .= "mat_nombre='".$materia['mat_nombre']."' ";
-        $sql .= "WHERE mat_id='".$materia['mat_id']."' ";
-        $sql .= "LIMIT 1";
-        $result = mysqli_query($db, $sql);
-        // For INSERT statements, $result is true/false
-        if($result) {
-          return true;
-        } else {
-          // INSERT failed
-          echo mysqli_error($db);
-          db_disconnect($db);
-          exit;
-        }
-      }
-
-function delete_materia($id){
-        global $db;
-        $sql ="DELETE FROM materias ";
-        $sql .="WHERE mat_id='".$id."' ";
-        $sql .="LIMIT 1";
-        $result=mysqli_query($db,$sql);
-        return($result);
-      }
-
-function buscar_tema($id) {
-        global $db;
-        $sql = "SELECT * FROM temas ";
-        $sql .="WHERE tema_id='". $id ."'";
-        $result = mysqli_query($db, $sql);
-        $tema= mysqli_fetch_assoc($result);
-        mysqli_free_result($result);
-        return($tema);
-      }
-
-function edit_tema($tema) {
-        global $db;
-        $sql = "UPDATE temas SET ";
-	
-	    $sql .= "mat_id='".$tema['mat_id']."', ";
-        $sql .= "email='".$alumno['email']."', ";
-        $sql .= "pass='".$alumno['pass']."', ";
-        $sql .= "permisos='".$alumno['permisos']."' ";
-        $sql .= "WHERE id_alumnos='".$alumno['id_alumnos']."' ";
-        $sql .= "LIMIT 1";
-	
-	
-	
-        $sql .= "tema_nombre='".$tema['tema_nombre']."' ";
-        $sql .= "LIMIT 1";
-        $result = mysqli_query($db, $sql);
-        // For INSERT statements, $result is true/false
-        if($result) {
-          return true;
-        } else {
-          // INSERT failed
-          echo mysqli_error($db);
-          db_disconnect($db);
-          exit;
-        }
-      }
-
-function delete_tema($id){
-        global $db;
-        $sql ="DELETE FROM temas ";
-        $sql .="WHERE tema_id='".$id."' ";
         $sql .="LIMIT 1";
         $result=mysqli_query($db,$sql);
         return($result);
@@ -201,13 +166,6 @@ function login($usuario) {
           }
       }
 
-function promociones(){
-              global $db;
-              $sql ="SELECT * FROM promociones";
-              $result= mysqli_query($db, $sql);
-              return ($result);
-            }
-
 function buscar_promocion($id) {
               global $db;
               $sql = "SELECT * FROM promociones ";
@@ -218,7 +176,7 @@ function buscar_promocion($id) {
               return($promociones);
             }
 
-function insertar_pregunta ($examen) {
+            function insertar_pregunta ($examen) {
                     global $db;
                     $sql = "INSERT INTO preguntas ";
                     $sql .= "(preg_nombre, tema_id) ";
@@ -229,7 +187,7 @@ function insertar_pregunta ($examen) {
                     $result = mysqli_query($db, $sql);
             }
 
-function insertar_opciones ($examen,$opc,$preg_id) {
+            function insertar_opciones ($examen,$opc,$preg_id) {
               global $db;
                     $examen['opc_id']=$opc;
                     $sql = "INSERT INTO opciones ";
