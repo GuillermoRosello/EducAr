@@ -6,7 +6,7 @@ function todaslaspreguntas(){
   return $result;
 }
 
-/*function preguntas_examen($tema){
+function preguntas_examen($tema){
   require_once ('functions.php');
   $r=0;
   $o=0;
@@ -27,7 +27,7 @@ function todaslaspreguntas(){
       $sql.= "WHERE preg_id='".$id[$r]."' AND opc_id='".$id_o[$o]."' AND tema_id='".$tema."'";
       $result_set = mysqli_query($db,$sql);
       $result = mysqli_fetch_assoc($result_set);
-      echo "<ul><input type=radio value=".$result['opc_puntos']." name=Pregunta.".$r." /> ".$result['opcion']." ".$result['opc_puntos']."</ul>";
+      echo "<ul><input type=radio value=".$result['opc_puntos']." name=Pregunta.".$r." required/> ".$result['opcion']." ".$result['opc_puntos']."</ul>";
       $o=$o+1;
       mysqli_free_result($result_set);
     }
@@ -35,7 +35,7 @@ function todaslaspreguntas(){
     $o=0;
     echo "</li>";
   }
-}*/
+}
 
 // Pablo
 function contacto_web(){
@@ -306,7 +306,7 @@ function buscar_tema($id) {
 function edit_tema($tema) {
         global $db;
         $sql = "UPDATE temas SET ";
-	
+
 	    $sql .= "mat_id='".$tema['mat_id']."', ";
         $sql .= "tema_id='".$tema['tema_id']."', ";
         $sql .= "tema_nombre='".$tema['tema_nombre']."' ";
