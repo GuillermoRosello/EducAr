@@ -40,14 +40,14 @@ function preguntas_examen(){
 // Pablo
 function contacto_web(){
 	global $db;
-	$sql ="SELECT * FROM promociones";
+	$sql ="SELECT * FROM contactos";
 	$result= mysqli_query($db, $sql);
 	return ($result);
 	}
 
 function buscar_contacto($id) {
     global $db;
-    $sql = "SELECT * FROM promociones ";
+    $sql = "SELECT * FROM contactos ";
     $sql .="WHERE ID='". $id ."'";
     $result = mysqli_query($db, $sql);
     $alumnos= mysqli_fetch_assoc($result);
@@ -58,7 +58,7 @@ function buscar_contacto($id) {
 
 function cant_contacto_web(){
     global $db;
-    $sql ="SELECT * FROM promociones ";
+    $sql ="SELECT * FROM contactos ";
     $result= mysqli_query($db, $sql);
     $number_of_results=mysqli_num_rows($result);
     return ($number_of_results);
