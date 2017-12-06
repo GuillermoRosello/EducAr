@@ -176,7 +176,7 @@ function buscar_promocion($id) {
               return($promociones);
             }
 
-            function insertar_pregunta ($examen) {
+function insertar_pregunta ($examen) {
                     global $db;
                     $sql = "INSERT INTO preguntas ";
                     $sql .= "(preg_nombre, tema_id) ";
@@ -187,7 +187,7 @@ function buscar_promocion($id) {
                     $result = mysqli_query($db, $sql);
             }
 
-            function insertar_opciones ($examen,$opc,$preg_id) {
+function insertar_opciones ($examen,$opc,$preg_id) {
               global $db;
                     $examen['opc_id']=$opc;
                     $sql = "INSERT INTO opciones ";
@@ -211,24 +211,116 @@ function buscar_promocion($id) {
                     }
                   }
 
-/*function preguntas(){
-  $resultados=todaslaspreguntas();
-  while ($preguntas=mysqli_fetch_assoc($resultados)){
+function materias(){
+      global $db;
+      $sql ='SELECT * FROM materias';
+      $result= mysqli_query($db, $sql);
+      return ($result);
     }
-    return $preguntas;
-}
 
-function cant_preguntas(){
-  global $db;
-  $query = "SELECT * FROM preguntas";
-  $result_set = mysqli_query($db,$query);
-  $cant = mysqli_num_rows($result_set);
-  mysqli_free_result($result_set);
-  mysqli_close ($db);
-  return $cant;
-}*/
+function temas(){
+      global $db;
+      $sql ='SELECT * FROM temas';
+      $result= mysqli_query($db, $sql);
+      return ($result);
+    }
 
+function crear_materia($mat_nombre) {
+        global $db;
 
+        $sql = "INSERT INTO materias ";
+        $sql .= "(mat_nombre) ";
+        $sql .= "VALUES (";
+        $sql .= "'" . $mat_nombre . "'";
+        $sql .= ")";
+        $result = mysqli_query($db, $sql);
+        // For INSERT statements, $result is true/false
+        if($result) {
+          return true;
+        } else {
+          // INSERT failed
+          echo mysqli_error($db);
+          db_disconnect($db);
+          exit;
+        }
+      }
 
+function buscar_materia($id) {
+        global $db;
+        $sql = "SELECT * FROM materias ";
+        $sql .="WHERE mat_id='". $id ."'";
+        $result = mysqli_query($db, $sql);
+        $materias= mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        return($materias);
+      }
+
+function edit_materia($materia) {
+        global $db;
+        $sql = "UPDATE materias SET ";
+        $sql .= "mat_nombre='".$materia['mat_nombre']."' ";
+        $sql .= "WHERE mat_id='".$materia['mat_id']."' ";
+        $sql .= "LIMIT 1";
+        $result = mysqli_query($db, $sql);
+        // For INSERT statements, $result is true/false
+        if($result) {
+          return true;
+        } else {
+          // INSERT failed
+          echo mysqli_error($db);
+          db_disconnect($db);
+          exit;
+        }
+      }
+
+function crear_tema($tema_nombre,$mat_id) {
+        global $db;
+        $sql = "INSERT INTO temas ";
+        $sql .= "(tema_nombre, mat_id) ";
+        $sql .= "VALUES (";
+        $sql .= "'" . $tema_nombre . "', ";
+        $sql .= "'" . $mat_id . "'";
+        $sql .= ")";
+        $result = mysqli_query($db, $sql);
+        // For INSERT statements, $result is true/false
+        if($result) {
+          return true;
+        } else {
+          // INSERT failed
+          echo mysqli_error($db);
+          db_disconnect($db);
+          exit;
+        }
+      }
+
+function buscar_tema($id) {
+        global $db;
+        $sql = "SELECT * FROM temas ";
+        $sql .="WHERE tema_id='". $id ."'";
+        $result = mysqli_query($db, $sql);
+        $temas= mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        return($temas);
+      }
+
+function edit_tema($tema) {
+        global $db;
+        $sql = "UPDATE temas SET ";
+	
+	    $sql .= "mat_id='".$tema['mat_id']."', ";
+        $sql .= "tema_id='".$tema['tema_id']."', ";
+        $sql .= "tema_nombre='".$tema['tema_nombre']."' ";
+        $sql .= "LIMIT 1";
+        $result = mysqli_query($db, $sql);
+        // For INSERT statements, $result is true/false
+        if($result) {
+          return true;
+        } else {
+          // INSERT failed
+          echo mysqli_error($db);
+          db_disconnect($db);
+          exit;
+        }
+      }
 
  ?>
