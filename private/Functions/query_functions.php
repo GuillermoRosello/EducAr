@@ -6,7 +6,7 @@ function todaslaspreguntas(){
   return $result;
 }
 
-function preguntas_examen(){
+function preguntas_examen($tema){
   require_once ('functions.php');
   $r=0;
   $o=0;
@@ -16,18 +16,18 @@ function preguntas_examen(){
   $id = UniqueRandomNumbersWithinRange(1, 30, 10);
   while ($r < 10)  {
     $sql = "SELECT * FROM preguntas ";
-    $sql.= "WHERE id_preg='".$id[$r]."'";
+    $sql.= "WHERE preg_id='".$id[$r]."' AND tema_id='".$tema."'";
     $result_set = mysqli_query($db,$sql);
     $result = mysqli_fetch_assoc($result_set);
-    echo "<li><h3>".$result['id_preg'].') '.$result['preg']."</h3>";
+    echo "<li><h3>".$result['preg_id'].') '.$result['preg_nombre']."</h3>";
     $id_o = UniqueRandomNumbersWithinRange(1,3,3);
     mysqli_free_result($result_set);
     while ($o < 3)    {
       $sql = "SELECT * FROM opciones ";
-      $sql.= "WHERE id_preg='".$id[$r]."' AND id_opcion='".$id_o[$o]."'";
+      $sql.= "WHERE preg_id='".$id[$r]."' AND opc_id='".$id_o[$o]."' AND tema_id='".$tema."'";
       $result_set = mysqli_query($db,$sql);
       $result = mysqli_fetch_assoc($result_set);
-      echo "<ul><input type=radio value=".$result['es_resp']." name=Pregunta.".$r." /> ".$result['opcion']." ".$result['es_resp']."</ul>";
+      echo "<ul><input type=radio value=".$result['opc_puntos']." name=Pregunta.".$r." /> ".$result['opcion']." ".$result['opc_puntos']."</ul>";
       $o=$o+1;
       mysqli_free_result($result_set);
     }
