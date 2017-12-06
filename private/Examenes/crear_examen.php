@@ -4,10 +4,11 @@ if (is_post_request()) {
   $examen['mat_id'] = $_POST['mat_nombre'];
   $examen['tema_id'] = $_POST['tema_nombre'];
   $i=1;
-  while ($i < 2) {
+  while ($i < 3) {
     $pregunta = "Pregunta-".$i."" ;
     $examen['preg_nombre'] = $_POST[$pregunta];
     $result=insertar_pregunta($examen);
+    $preg_id = mysqli_insert_id($db);
     $j = 1;
     while ($j < 4) {
       $opc = "Opcion-".$i."-".$j."";
@@ -19,7 +20,7 @@ if (is_post_request()) {
     else {
       $examen['opc_puntos'] = 0;
     }
-      insertar_opciones($examen,$j);
+      $result=insertar_opciones($examen,$j,$preg_id);
       $j = $j+1;
     }
     $i = $i+1;

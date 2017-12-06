@@ -41,7 +41,7 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                           <hr><br>
                           <?php
                           $preg = 1;
-                          while ($preg<2) {
+                          while ($preg<3) {
                           echo "
                             <div class='control-group form-group'>
                                 <div class='controls'>

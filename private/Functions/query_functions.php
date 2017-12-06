@@ -40,14 +40,14 @@ function preguntas_examen(){
 // Pablo
 function contacto_web(){
 	global $db;
-	$sql ="SELECT * FROM tb_cform";
+	$sql ="SELECT * FROM promociones";
 	$result= mysqli_query($db, $sql);
 	return ($result);
 	}
 
 function buscar_contacto($id) {
     global $db;
-    $sql = "SELECT * FROM tb_cform ";
+    $sql = "SELECT * FROM promociones ";
     $sql .="WHERE ID='". $id ."'";
     $result = mysqli_query($db, $sql);
     $alumnos= mysqli_fetch_assoc($result);
@@ -58,7 +58,7 @@ function buscar_contacto($id) {
 
 function cant_contacto_web(){
     global $db;
-    $sql ="SELECT * FROM tb_cform ";
+    $sql ="SELECT * FROM promociones ";
     $result= mysqli_query($db, $sql);
     $number_of_results=mysqli_num_rows($result);
     return ($number_of_results);
@@ -187,14 +187,14 @@ function buscar_promocion($id) {
                     $result = mysqli_query($db, $sql);
             }
 
-            function insertar_opciones ($examen,$opc) {
+            function insertar_opciones ($examen,$opc,$preg_id) {
               global $db;
                     $examen['opc_id']=$opc;
                     $sql = "INSERT INTO opciones ";
                     $sql .= "(tema_id, preg_id, opc_id, opcion, opc_puntos) ";
                     $sql .= "VALUES (";
                     $sql .= "'" . $examen['tema_id'] . "', ";
-                    $sql .= "'". 1 ."', ";
+                    $sql .= "'". $preg_id ."', ";
                     $sql .= "'" . $examen['opc_id'] . "', ";
                     $sql .= "'" . $examen['opcion'] . "', ";
                     $sql .= "'" . $examen['opc_puntos'] . "'";
