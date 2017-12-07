@@ -5,7 +5,48 @@ function todaslaspreguntas(){
   $result = mysqli_query($db,$sql);
   return $result;
 }
+function examen_realizado($examen_id, $preg_id, $opc_id, $nota) {
+        global $db;
+        $preg="preg_id".$i;
+        $opc="Pregunta-".$i;
+        $sql = "INSERT INTO examen_realizado ";
+        $sql .= "(examen_id, preg_id, opc_id, opc_puntos) ";
+        $sql .= "VALUES (";
+        $sql .= "'" . $examen_id . "',";
+        $sql .= "'" . $preg_id[$preg] . "',";
+        $sql .= "'" . $opc_id[$opc] . "',";
+        $sql .= "'" . $opc_puntos . "'";
+        $sql .= ")";
+        $result = mysqli_query($db, $sql);
+        // For INSERT statements, $result is true/false
+        if($result) {
+          $sql = "UPDATE examen_alumno SET ";
+          $sql .= "examen_fecha= "CURDATE()", ";
+          $sql .= "examen_nota='".$nota."', ";
+          $sql .= "estado_id='1' ";
+          $sql .= "WHERE id_examen='".$examen_id."' ";
+          $sql .= "LIMIT 1";
+          $result = mysqli_query($db, $sql);
+          if($result) {
+          return true;
+          }
+          else {
+          // INSERT failed
+          echo mysqli_error($db);
+          db_disconnect($db);
+          exit;
+        }
+      }
 
+function es_respuesta($preg_id,$opcion_id,$tema){
+  global $db;
+  $sql = "SELECT * FROM opciones ";
+  $sql.= "WHERE preg_id='".$preg_id."' AND opc_id='".$opcion_id."' AND tema_id='".$tema."'";
+  $result_set = mysqli_query($db,$sql);
+  $result = mysqli_fetch_assoc($result_set);
+  $resp = $result['opc_puntos'];
+  return $resp;
+}
 function preguntas_examen($tema){
   require_once ('functions.php');
   $r=0;
@@ -28,8 +69,7 @@ function preguntas_examen($tema){
       $sql.= "WHERE preg_id='".$id[$r]."' AND opc_id='".$id_o[$o]."' AND tema_id='".$tema."'";
       $result_set = mysqli_query($db,$sql);
       $result = mysqli_fetch_assoc($result_set);
-      echo "<ul><input type=radio value=".$result['opc_puntos']." name=Pregunta.".$r." required/> ".$result['opcion']." ".$result['opc_puntos']."</ul>";
-      echo "<ul><input  style='display: none'  type=radio value=".$result['opc_id']." name=Pregunta.".$r." required/> </ul>";
+      echo "<ul><input type=radio value=".$result['opc_id']." name='Pregunta-".$r."' required/> ".$result['opcion']." ".$result['opc_puntos']."</ul>";
       $o=$o+1;
       mysqli_free_result($result_set);
     }
@@ -37,7 +77,7 @@ function preguntas_examen($tema){
     $o=0;
     echo "</li>";
   }
-return ($result);
+
 }
 
 // Pablo
