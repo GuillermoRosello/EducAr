@@ -5,28 +5,37 @@ function todaslaspreguntas(){
   $result = mysqli_query($db,$sql);
   return $result;
 }
-function examen_realizado($examen_id, $preg_id, $opc_id, $nota) {
+function examen_realizado($examen_id, $preg_id, $opc_id, $opc_puntos, $nota) {
         global $db;
-        $preg="preg_id".$i;
+        $i=0;
+        while ($i < 10) {
+        $preg="preg_id-".$i;
         $opc="Pregunta-".$i;
+        $resp="opc_puntos-".$i;
         $sql = "INSERT INTO examen_realizado ";
         $sql .= "(examen_id, preg_id, opc_id, opc_puntos) ";
         $sql .= "VALUES (";
         $sql .= "'" . $examen_id . "',";
         $sql .= "'" . $preg_id[$preg] . "',";
         $sql .= "'" . $opc_id[$opc] . "',";
-        $sql .= "'" . $opc_puntos . "'";
+        $sql .= "'" . $opc_puntos[$resp] . "'";
         $sql .= ")";
         $result = mysqli_query($db, $sql);
+        $i=$i+1;
+        }
+        $i=0;
         // For INSERT statements, $result is true/false
         if($result) {
+
           $sql = "UPDATE examen_alumno SET ";
-          $sql .= "examen_fecha= "CURDATE()", ";
+          /*$sql .= "examen_fecha='".date("YYYY/mm/dd")."', ";*/
           $sql .= "examen_nota='".$nota."', ";
           $sql .= "estado_id='1' ";
-          $sql .= "WHERE id_examen='".$examen_id."' ";
+          $sql .= "WHERE examen_id='".$examen_id."' ";
           $sql .= "LIMIT 1";
           $result = mysqli_query($db, $sql);
+          $i=$i+1;
+
           if($result) {
           return true;
           }
@@ -37,6 +46,7 @@ function examen_realizado($examen_id, $preg_id, $opc_id, $nota) {
           exit;
         }
       }
+    }
 
 function es_respuesta($preg_id,$opcion_id,$tema){
   global $db;

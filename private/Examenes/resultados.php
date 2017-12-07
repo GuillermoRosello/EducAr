@@ -25,6 +25,8 @@ $opciones = 0;
       $opcion_id = $opcion[$form];
 
       $preguntas = es_respuesta($preg_id,$opcion_id,$tema);
+      $query2="opc_puntos-".$i;
+      $opc_puntos[$query2]=$preguntas;
       $resultado = $resultado + $preguntas;
       }
       $i=$i+1;
@@ -53,11 +55,12 @@ $opciones = 0;
       $nota = "Definitivamente, este curso no es para usted...!";
       break;
      }
+     echo date("d/m/Y");
      echo "<div class=container>";
      echo  "<div class=col-lg-12>";
      echo "<div class=jumbotron>";
      echo "<h4><span class=Examen> $nota.</span></h4> <br>";
-     examen_realizado($examen_id, $preg, $opcion, $nota);
+     examen_realizado($examen_id, $preg, $opcion, $opc_puntos, $resultado);
   }
   else
     {
