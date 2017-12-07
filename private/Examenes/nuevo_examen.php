@@ -38,6 +38,12 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                                     <p class="help-block"></p>
                                 </div>
                             </div>
+							<div class="control-group form-group">
+							  <div class="controls">
+								  <input type="hidden" class="form-control" value="<?php echo $tema['tema_id']; ?>" name="tema_id" readonly>
+								  <p class="help-block"></p>
+							  </div>
+                          </div>
                           <hr>
 						  <br>
                           <?php

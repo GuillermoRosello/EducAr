@@ -177,24 +177,24 @@ function buscar_promocion($id) {
               return($promociones);
             }
 
-function insertar_pregunta ($examen) {
+function insertar_pregunta ($examen,$tema_id) {
                     global $db;
                     $sql = "INSERT INTO preguntas ";
                     $sql .= "(preg_nombre, tema_id) ";
                     $sql .= "VALUES (";
                     $sql .= "'" . $examen['preg_nombre'] . "',";
-                    $sql .= "'" . $examen['tema_id'] . "'";
+                    $sql .= "'" . $tema_id['tema_id'] . "'";
                     $sql .= ")";
                     $result = mysqli_query($db, $sql);
             }
 
-function insertar_opciones ($examen,$opc,$preg_id) {
+function insertar_opciones ($examen,$opc,$preg_id,$tema_id) {
               global $db;
                     $examen['opc_id']=$opc;
                     $sql = "INSERT INTO opciones ";
                     $sql .= "(tema_id, preg_id, opc_id, opcion, opc_puntos) ";
                     $sql .= "VALUES (";
-                    $sql .= "'" . $examen['tema_id'] . "', ";
+                    $sql .= "'" . $tema_id['tema_id'] . "', ";
                     $sql .= "'". $preg_id ."', ";
                     $sql .= "'" . $examen['opc_id'] . "', ";
                     $sql .= "'" . $examen['opcion'] . "', ";

@@ -21,6 +21,7 @@
 				<th>Email</th>
 				<th>Permisos</th>
 				<th>Editar</th>
+				<th>Asignar Examen</th>
 				<th>Borrar</th>
 				</tr>
 			</thead>
@@ -33,6 +34,8 @@
 				<td><?php echo h($alumno['permisos']); ?></td>
 				<!-- Pablo -->
 				<td><a href="<?php echo 'editar_alumno.php?id='.$alumno['alumno_id'];?>" title="Editar"><span class="glyphicon glyphicon-pencil"></span></a></td>
+				<!-- Pablo -->
+				<td><a href="<?php echo '../Examenes/asignar_examen.php?id='.$alumno['alumno_id'];?>" title="Asignar Examen"><span class="glyphicon glyphicon-check"></span></a></td>
 				<!-- Pablo -->
 				<td><a href="<?php echo 'eliminar_alumno.php?id='.$alumno['alumno_id'];?>" title="Borrar"><span class="glyphicon glyphicon-trash"></span></a></td>
 				</tr>
