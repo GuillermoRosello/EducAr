@@ -20,6 +20,7 @@ function preguntas_examen($tema){
     $result_set = mysqli_query($db,$sql);
     $result = mysqli_fetch_assoc($result_set);
     echo "<li><h3>".$result['preg_id'].') '.$result['preg_nombre']."</h3>";
+    echo "<input type='hidden' name='preg_id-".$r."' value='".$result['preg_id']."'>";
     $id_o = UniqueRandomNumbersWithinRange(1,3,3);
     mysqli_free_result($result_set);
     while ($o < 3)    {
@@ -28,6 +29,7 @@ function preguntas_examen($tema){
       $result_set = mysqli_query($db,$sql);
       $result = mysqli_fetch_assoc($result_set);
       echo "<ul><input type=radio value=".$result['opc_puntos']." name=Pregunta.".$r." required/> ".$result['opcion']." ".$result['opc_puntos']."</ul>";
+      echo "<ul><input  style='display: none'  type=radio value=".$result['opc_id']." name=Pregunta.".$r." required/> </ul>";
       $o=$o+1;
       mysqli_free_result($result_set);
     }
@@ -35,7 +37,7 @@ function preguntas_examen($tema){
     $o=0;
     echo "</li>";
   }
-  return ($result);
+return ($result);
 }
 
 // Pablo

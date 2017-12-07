@@ -2,7 +2,7 @@
 <?php require_once ('../Functions/initialize.php');?>
 <?php include(SHARED_PATH.'/private_header.php'); ?>
 <?php /*$tema=$_POST['tema'];*/
-$tema=0; ?>
+$tema=1; ?>
 <script type="text/javascript">
   setTimeout(function() {
   document.getElementById("submit").click();
@@ -17,7 +17,10 @@ $tema=0; ?>
           <button onClick="window.print()" class="btn btn-primary" >Imprimir</button>
           <form action="resultados.php" method="post">
           <ul>
-          <?php $preguntas  = preguntas_examen($tema);?>
+          <?php $preguntas = preguntas_examen($tema);?>
+
+          <input type="hidden" name="preguntas" value='<?php serialize($preguntas);?>'>
+
           </ul>
       <p><input type=submit name=examen class="btn btn-primary" value=Evaluar /></p>
           <input type=submit id="submit" name=examen class="btn btn-primary" value=Evaluar formnovalidate style="display: none;">

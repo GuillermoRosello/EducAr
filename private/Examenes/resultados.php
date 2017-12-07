@@ -11,6 +11,8 @@ $resultado = 0;
 {
     while ($i < 10)
     {
+      $query = "preg_id-".$i;
+      $preg_id = $_POST[$query];
       $form = "Pregunta_".$i;
       if (empty($_POST[$form])) {
         $_POST[$form]=0;
@@ -43,6 +45,7 @@ $resultado = 0;
       $nota = "Definitivamente, este curso no es para usted...!";
       break;
      }
+
      echo "<div class=container>";
      echo  "<div class=col-lg-12>";
      echo "<div class=jumbotron>";
