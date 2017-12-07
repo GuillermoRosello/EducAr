@@ -5,7 +5,7 @@ if (is_post_request()) {
   $alumno['alumno_id'] = $_POST['alumno_id'];
   $alumno['nombre'] = $_POST['nombre'];
   $alumno['telefono'] = $_POST['telefono'];
-  $alumno ['email'] = $_POST['email'];
+  $alumno['email'] = $_POST['email'];
   $alumno['pass'] = $_POST['pass'];
   $alumno['permisos'] = $_POST['permisos'];
   $result=edit_alumno($alumno);

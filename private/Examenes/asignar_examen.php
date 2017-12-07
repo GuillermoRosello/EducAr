@@ -12,6 +12,7 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
 <?php  $id=$_GET['id'];
         echo "";?>
 <?php $alumno=buscar_alumno($id); ?>
+<?php $temas = temas(); ?>
 
 
                 <!-- Contact Form -->
@@ -19,7 +20,7 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                 <div class="row">
                     <div class="col-md-8">
                         <br>
-                        <form name="sentMessage" id="contactForm" action="../Alumnos/modificar_alumno.php" method="post" >
+                        <form name="sentMessage" id="contactForm" action="../Examenes/poner_examen.php" method="post" >
                           <div class="control-group form-group">
                               <div class="controls">
                                   <input type="hidden" class="form-control" value=<?php echo $alumno['alumno_id']; ?> name="alumno_id" >
@@ -33,37 +34,17 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                                     <p class="help-block"></p>
                                 </div>
                             </div>
+							<div>
+							<label>Tema:</label>
+							<select name='tema_id' class="form-control">
+								<option value="">Seleccionar</option>
+								<?php while($tema = mysqli_fetch_assoc($temas)){ ?>
+								<option value="<?php echo h($tema['tema_id']); ?>"><?php echo h($tema['tema_nombre']); ?></option>
+								<?php }; ?>
+							</select>
+						  </div>
+							<br>
 
-                            <div class="control-group form-group">
-                                <div class="controls">
-                                    <label>Teléfono:</label>
-                                    <input type="tel" class="form-control" value=<?php echo $alumno['telefono']; ?> name="telefono" required data-validation-required-message="Ingrese su número telefónico.">
-                                </div>
-                            </div>
-                            <div class="control-group form-group">
-                                <div class="controls">
-                                    <label>Email:</label>
-                                    <input type="email" class="form-control" value=<?php echo $alumno['email']; ?> name="email" required data-validation-required-message="Ingrese una dirección de Email válida.">
-                                </div>
-                            </div>
-                            <div class="control-group form-group">
-                                <div class="controls">
-                                    <label>Contraseña:</label>
-                                    <input type="password" value=<?php echo $alumno['pass']; ?> name="pass" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="control-group form-group">
-                                <div class="controls">
-                                    <label>Permisos:</label>
-                                    <select name="permisos" class="form-control">
-                                      <option value="<?php echo $alumno['permisos'];?>"><?php echo $alumno['permisos'];?></option>
-                                      <option value="ALUMNO">ALUMNO</option>
-                                      <option value="PROFESOR">PROFESOR</option>
-                                      <option value="ADMIN">ADMIN</option>
-                                    </select>
-                                </div>
-								<br>
-                            </div>
                             <div id="success"></div>
                             <!-- For success/fail messages -->
                             <!-- Pablo -->

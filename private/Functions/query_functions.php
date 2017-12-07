@@ -340,4 +340,44 @@ function edit_tema($mat_id,$tema_nombre,$tema_id) {
         }
       }
 
+function asignar_tema($alumno, $tema) {
+        global $db;
+        $sql = "INSERT INTO examen_alumno ";
+        $sql .= "(alumno_id, mat_id, tema_id) ";
+        $sql .= "VALUES (";
+        $sql .= "'" . $alumno['alumno_id'] . "',";
+        $sql .= "'" . $tema['mat_id'] . "',";
+        $sql .= "'" . $tema['tema_id'] . "'";
+        $sql .= ")";
+        $result = mysqli_query($db, $sql);
+        // For INSERT statements, $result is true/false
+        if($result) {
+          return true;
+        } else {
+          // INSERT failed
+          echo mysqli_error($db);
+          db_disconnect($db);
+          exit;
+        }
+      }
+
+
+
+function buildOptions($arr, $target, $parent = NULL) {
+  $html = "";
+  foreach ( $arr as $key => $v )
+  {
+    if ( $key == $target )
+      $html .= "<option value='$key' selected>$parent {$v['name']}</option>\n";
+    else
+      $html .= "<option value='$key'>$parent {$v['name']}</option>\n";
+
+    if (array_key_exists('children', $v)) 
+      $html .= buildOptions($v['children'],$target,$parent . $v['name']." > ");
+  }
+
+  return $html;
+}
+
+
  ?>
