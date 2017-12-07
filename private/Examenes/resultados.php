@@ -1,24 +1,32 @@
-
 <?php  require '../Functions/initialize.php';?>
 <?php include(SHARED_PATH.'/private_header.php'); ?>
 <?php include(SHARED_PATH.'/private_navigation.php'); ?>
 <?php
-
+$examen_id=$_POST['examen_id'];
+$tema=$_POST['tema'];
 $i = 0;
 $resultado = 0;
-//print_r($_POST);
+$opciones = 0;
+//print_r ($_POST);
   if(isset($_POST['examen']) || $_POST['examen'] == 'Evaluar' || isset($_POST['ignorar']) || $_POST['ignorar'] == 'Evaluar')
 {
     while ($i < 10)
     {
       $query = "preg_id-".$i;
-      $preg_id = $_POST[$query];
-      $form = "Pregunta_".$i;
+      $preg [$query] = $_POST[$query];
+      $preg_id = $preg [$query];
+      $form = "Pregunta-".$i;
       if (empty($_POST[$form])) {
-        $_POST[$form]=0;
+      $resultado = $resultado + 0;
       }
-      $preguntas = $_POST[$form];
+      else {
+      $opcion[$form] = $_POST[$form];
+      $opcion_id = $opcion[$form];
+      $preguntas = es_respuesta($preg_id,$opcion_id,$tema);
+      $query2="opc_puntos-".$i;
+      $opc_puntos[$query2]=$preguntas;
       $resultado = $resultado + $preguntas;
+      }
       $i=$i+1;
     }
     switch ($resultado)
@@ -45,11 +53,12 @@ $resultado = 0;
       $nota = "Definitivamente, este curso no es para usted...!";
       break;
      }
-
+     echo date("d/m/Y");
      echo "<div class=container>";
      echo  "<div class=col-lg-12>";
      echo "<div class=jumbotron>";
      echo "<h4><span class=Examen> $nota.</span></h4> <br>";
+     examen_realizado($examen_id, $preg, $opcion, $opc_puntos, $resultado);
   }
   else
     {
@@ -60,9 +69,6 @@ $resultado = 0;
     echo " <a href=index1.php class=btn btn-primary >Volver</a> ";
     echo "string";
 }
-
-
-
 ?>
 </div>
 </div>

@@ -4,11 +4,12 @@
 <?php $id=$_GET['id'];
         echo "";?>
 <?php $examen_alumno=buscar_examen_alumno ($id); ?>
-<?php $tema=buscar_preg ($examen_alumno['tema_id']); ?>
+<?php $tema=buscar_preg ($examen_alumno['tema_id']);
+		$examen_id=$examen_alumno['tema_id'];?>
 <script type="text/javascript">
   setTimeout(function() {
   document.getElementById("submit").click();
-}, 10000);
+}, 50000);
 </script>
 <?php include(SHARED_PATH.'/private_navigation.php'); ?>
   <div class="container">
@@ -20,12 +21,11 @@
           <form action="resultados.php" method="post">
           <ul>
           <?php $preguntas = preguntas_examen($examen_alumno['tema_id']);?>
-
-          <input type="hidden" name="preguntas" value='<?php serialize($preguntas);?>'>
-
+		<input type='hidden' name='tema' value="<?php echo $examen_alumno['tema_id']; ?>">
+          <input type='hidden' name='examen_id' value="<?php echo $examen_alumno['examen_id'] ?>">
           </ul>
       <p><input type=submit name=examen class="btn btn-primary" value=Evaluar /></p>
-          <input type=submit id="submit" name=examen class="btn btn-primary" value=Evaluar formnovalidate style="display: none;">
+          <input type=submit id="submit" name=ignorar class="btn btn-primary" value=Evaluar formnovalidate style="display: none;">
       </form>
     </div>
   </div>
