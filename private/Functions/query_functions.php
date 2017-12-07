@@ -65,6 +65,16 @@ function examenes_alumnos(){
       return ($result);
     }
 
+function buscar_examen_alumno($id) {
+        global $db;
+        $sql = "SELECT * FROM examen_alumno ";
+        $sql .="WHERE examen_id='". $id ."'";
+        $result = mysqli_query($db, $sql);
+        $examen_alumnos= mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        return($examen_alumnos);
+      }
+
 function alumnos(){
       global $db;
       $sql ='SELECT * FROM alumnos';
@@ -343,11 +353,11 @@ function edit_tema($mat_id,$tema_nombre,$tema_id) {
 function asignar_tema($alumno, $tema) {
         global $db;
         $sql = "INSERT INTO examen_alumno ";
-        $sql .= "(alumno_id, mat_id, tema_id) ";
+        $sql .= "(alumno_id, tema_id, mat_id) ";
         $sql .= "VALUES (";
         $sql .= "'" . $alumno['alumno_id'] . "',";
-        $sql .= "'" . $tema['mat_id'] . "',";
-        $sql .= "'" . $tema['tema_id'] . "'";
+        $sql .= "'" . $tema['tema_id'] . "',";
+        $sql .= "'" . $tema['mat_id'] . "'";
         $sql .= ")";
         $result = mysqli_query($db, $sql);
         // For INSERT statements, $result is true/false

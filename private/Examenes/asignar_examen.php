@@ -9,9 +9,9 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
 <?php include(SHARED_PATH.'/private_navigation.php'); ?>
 <?php include(SHARED_PATH.'/private_sidebar.php'); ?>
 
-<?php  $id=$_GET['id'];
+<?php  $ida=$_GET['ida'];
         echo "";?>
-<?php $alumno=buscar_alumno($id); ?>
+<?php $alumno=buscar_alumno($ida); ?>
 <?php $temas = temas(); ?>
 
 
@@ -34,6 +34,7 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                                     <p class="help-block"></p>
                                 </div>
                             </div>
+							
 							<div>
 							<label>Tema:</label>
 							<select name='tema_id' class="form-control">
@@ -43,6 +44,13 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
 								<?php }; ?>
 							</select>
 						  </div>
+							
+							<div class="control-group form-group">
+                              <div class="controls">
+                                  <input type="hidden" class="form-control" value=<?php echo $tema['mat_id']; ?> name="mat_id" >
+                                  <p class="help-block"></p>
+                              </div>
+                          	</div>
 							<br>
 
                             <div id="success"></div>
