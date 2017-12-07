@@ -7,8 +7,9 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
 <?php include(SHARED_PATH.'/private_header.php'); ?>
 <?php include(SHARED_PATH.'/private_navigation.php'); ?>
 <?php include(SHARED_PATH.'/private_sidebar.php'); ?>
-<?php $materias = materias(); ?>
-<?php $temas = temas(); ?>
+
+<?php $id = $_GET['id']; ?>
+<?php $tema = buscar_tema($id); ?>
 
                 <!-- Contact Form -->
                 <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
@@ -16,29 +17,27 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                     <div class="col-md-8">
                         <br>
                         <form name="sentMessage" id="contactForm" action="../Examenes/crear_examen.php" method="post" >
-						  <div>
-							<label>Materia:</label>
-							<select name='mat_id' class="form-control">
-								<option value="">Seleccionar</option>
-								<?php while($materia = mysqli_fetch_assoc($materias)){ ?>
-								<option value="<?php echo h($tema['mat_id']); ?>"><?php echo h($materia['mat_nombre']); ?></option>
-								<?php }; ?>
-							</select>
-						  </div>
-
-							<br>
-							FALTA FILTRAR QUE CUANDO SE ELIJA UNA MATERIA, NOS TRAIGA SOLO LOS TEMAS DE ESA MATERIA
-						  <div>
-							<label>Tema:</label>
-							<select name='tema_id' class="form-control">
-								<option value="">Seleccionar</option>
-								<?php while($tema = mysqli_fetch_assoc($temas)){ ?>
-								<option value="<?php echo h($tema['tema_id']); ?>"><?php echo h($tema['tema_nombre']); ?></option>
-								<?php }; ?>
-							</select>
-						  </div>
-							
-						  <br>
+						  <div class="control-group form-group">
+                              <div class="controls">
+                                  <input type="hidden" class="form-control" value="<?php echo $tema['tema_id']; ?>" name="tema_id" readonly>
+                                  <p class="help-block"></p>
+                              </div>
+                          </div>
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label>Materia:</label>
+									<?php $buscar_materia = buscar_materia($tema['mat_id']); ?>
+									<input type="text" class="form-control" value="<?php echo h($buscar_materia['mat_nombre']); ?>" name="mat_nombre"  readonly>
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+							<div class="control-group form-group">
+                                <div class="controls">
+                                    <label>Tema:</label>
+                                    <input type="text" class="form-control" value="<?php echo $tema['tema_nombre']; ?>" name="tema_nombre"  readonly>
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
                           <hr>
 						  <br>
                           <?php

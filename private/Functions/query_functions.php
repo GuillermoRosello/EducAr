@@ -49,14 +49,14 @@ function contacto_web(){
 	}
 
 function buscar_contacto($id) {
-    global $db;
-    $sql = "SELECT * FROM contactos ";
-    $sql .="WHERE ID='". $id ."'";
-    $result = mysqli_query($db, $sql);
-    $alumnos= mysqli_fetch_assoc($result);
-    mysqli_free_result($result);
-    return($alumnos);
-  }
+        global $db;
+        $sql = "SELECT * FROM contactos ";
+        $sql .="WHERE contacto_id='". $id ."'";
+        $result = mysqli_query($db, $sql);
+        $contactos= mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        return($contactos);
+      }
 
 function examenes_alumnos(){
       global $db;
@@ -263,10 +263,10 @@ function crear_materia($mat_nombre) {
         }
       }
 
-function buscar_materia($id) {
+function buscar_materia($mat_id) {
         global $db;
         $sql = "SELECT * FROM materias ";
-        $sql .="WHERE mat_id='". $id ."'";
+        $sql .="WHERE mat_id='". $mat_id ."'";
         $result = mysqli_query($db, $sql);
         $materias= mysqli_fetch_assoc($result);
         mysqli_free_result($result);
@@ -311,22 +311,22 @@ function crear_tema($tema_nombre,$mat_id) {
         }
       }
 
-function buscar_tema($id) {
+function buscar_tema($tema_id) {
         global $db;
         $sql = "SELECT * FROM temas ";
-        $sql .="WHERE tema_id='". $id ."'";
+        $sql .="WHERE tema_id='". $tema_id ."'";
         $result = mysqli_query($db, $sql);
         $temas= mysqli_fetch_assoc($result);
         mysqli_free_result($result);
         return($temas);
       }
 
-function edit_tema($tema,$materia) {
+function edit_tema($mat_id,$tema_nombre,$tema_id) {
         global $db;
         $sql = "UPDATE temas SET ";
-	    $sql .= "mat_id='".$materia['mat_id']."', ";
-        $sql .= "tema_nombre='".$tema['tema_nombre']."' ";
-        $sql .= "WHERE tema_id='".$tema['tema_id']."' ";
+	    $sql .= "mat_id='".$mat_id['mat_id']."', ";
+        $sql .= "tema_nombre='".$tema_nombre['tema_nombre']."' ";
+        $sql .= "WHERE tema_id='".$tema_id['tema_id']."' ";
         $sql .= "LIMIT 1";
         $result = mysqli_query($db, $sql);
         // For INSERT statements, $result is true/false

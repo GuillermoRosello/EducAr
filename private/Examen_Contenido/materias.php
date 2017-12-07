@@ -18,6 +18,7 @@
 				<th>Id</th>
 				<th>Materia</th>
 				<th>Editar</th>
+				<th>Crear Tema</th>
 				</tr>
 			</thead>
 
@@ -26,7 +27,7 @@
 				<td><?php echo h($materia['mat_nombre']); ?></td>
 				<!-- Pablo -->
 				<td><a href="<?php echo '../Examen_Contenido/editar_materia.php?id='.$materia['mat_id'];?>" title="Editar"><span class="glyphicon glyphicon-pencil"></span></a></td>
-				</tr>
+				<td><a href="<?php echo '../Examen_Contenido/nuevo_tema.php?id='.$materia['mat_id'];?>" title="Crear Tema"><span class="glyphicon glyphicon-pencil"></span></a></td>
 				<?php }; ?>
 			</tbody>
 		</table>

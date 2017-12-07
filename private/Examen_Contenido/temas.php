@@ -17,20 +17,21 @@
 		<table class="display" id="mitabla">
 			<thead><tr>
 				<th>Id</th>
-				<th>Tema</th>
 				<th>Materia</th>
+				<th>Tema</th>
 				<th>Editar</th>
+				<th>Crear Preguntas</th>
 				</tr>
 			</thead>
 
 			<tbody><?php while($tema = mysqli_fetch_assoc($temas)){ ?><tr>
 				<td><?php echo h($tema['tema_id']); ?></td>
-				<td><?php echo h($tema['tema_nombre']); ?></td>
 				<?php $buscar_materia = buscar_materia($tema['mat_id']); ?>
 				<td><?php echo ($buscar_materia['mat_nombre']); ?></td>
+				<td><?php echo h($tema['tema_nombre']); ?></td>
 				<!-- Pablo -->
 				<td><a href="<?php echo '../Examen_Contenido/editar_tema.php?id='.$tema['tema_id'];?>" title="Editar"><span class="glyphicon glyphicon-pencil"></span></a></td>
-				</tr>
+				<td><a href="<?php echo '../Examenes/nuevo_examen.php?id='.$tema['tema_id'];?>" title="Cargar Preguntas"><span class="glyphicon glyphicon-pencil"></span></a></td>
 				<?php }; ?>
 			</tbody>
 		</table>
