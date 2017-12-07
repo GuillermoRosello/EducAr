@@ -1,8 +1,10 @@
 <?php $page_title ='Examen'; ?>
 <?php require_once ('../Functions/initialize.php');?>
 <?php include(SHARED_PATH.'/private_header.php'); ?>
-<?php /*$tema=$_POST['tema'];*/
-$tema=1; ?>
+<?php $id=$_GET['id'];
+        echo "";?>
+<?php $examen_alumno=buscar_examen_alumno ($id); ?>
+<?php $tema=buscar_preg ($examen_alumno['tema_id']); ?>
 <script type="text/javascript">
   setTimeout(function() {
   document.getElementById("submit").click();
@@ -17,7 +19,7 @@ $tema=1; ?>
           <button onClick="window.print()" class="btn btn-primary" >Imprimir</button>
           <form action="resultados.php" method="post">
           <ul>
-          <?php $preguntas = preguntas_examen($tema);?>
+          <?php $preguntas = preguntas_examen($examen_alumno['tema_id']);?>
 
           <input type="hidden" name="preguntas" value='<?php serialize($preguntas);?>'>
 

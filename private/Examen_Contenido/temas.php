@@ -19,7 +19,6 @@
 				<th>Tema</th>
 				<th>Editar</th>
 				<th>Cargar Preguntas</th>
-				<th>Ver Preguntas</th>
 				</tr>
 			</thead>
 
@@ -31,7 +30,6 @@
 				<!-- Pablo -->
 				<td><a href="<?php echo '../Examen_Contenido/editar_tema.php?id='.$tema['tema_id'];?>" title="Editar"><span class="glyphicon glyphicon-pencil"></span></a></td>
 				<td><a href="<?php echo '../Examenes/nuevo_examen.php?id='.$tema['tema_id'];?>" title="Cargar Preguntas"><span class="glyphicon glyphicon-check"></span></a></td>
-				<td><a href="<?php echo '../Examenes/ver_examen.php?id='.$tema['tema_id'];?>" title="Ver Preguntas"><span class="glyphicon glyphicon-search"></span></a></td>
 				<?php }; ?>
 			</tbody>
 		</table>

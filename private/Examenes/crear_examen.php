@@ -5,7 +5,7 @@ if (is_post_request()) {
   $examen['mat_id'] = $_POST['mat_nombre'];
   $examen['tema_id'] = $_POST['tema_nombre'];
   $i=1;
-  while ($i < 3) {
+  while ($i < 31) {
     $pregunta = "Pregunta-".$i."" ;
     $examen['preg_nombre'] = $_POST[$pregunta];
     $result=insertar_pregunta ($examen,$tema_id);

@@ -1,4 +1,4 @@
-<?php $page_title ='Alumnos'; ?>
+<?php $page_title ='Examen'; ?>
 <!-- Pablo -->
 <?php $page_subtitle ='Editar'; ?>
 <?php  require '../Functions/initialize.php';
@@ -92,13 +92,14 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
 
 <?php $id = $_GET['id']; ?>
 <?php $tema = buscar_tema($id); ?>
+<?php $preg = buscar_preg($id); ?>
 
                 <!-- Contact Form -->
                 <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
                 <div class="row">
                     <div class="col-md-8">
                         <br>
-                        <form name="sentMessage" id="contactForm" action="../Examenes/crear_examen.php" method="post" >
+                        <form name="sentMessage" id="contactForm" action="../Examenes/modificar_examen.php" method="post" >
 						  <div class="control-group form-group">
                               <div class="controls">
                                   <input type="hidden" class="form-control" value="<?php echo $tema['tema_id']; ?>" name="tema_id" readonly>
@@ -134,8 +135,8 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                           echo "
                             <div class='control-group form-group'>
                                 <div class='controls'>
-                                    <h5><label>Pregunta ".$preg.":</label>
-                                    <input type='text' class='form-control' name= 'Pregunta-".$preg."' 'required data-validation-required-message= Ingrese Pregunta ".$preg."></h5>
+                                    <h5><label>Pregunta ".$preg['preg_id'].":</label>
+                                    <input type='text' class='form-control' name= 'Pregunta-".$preg['preg_id']."' 'required data-validation-required-message= Ingrese Pregunta ".$preg['preg_id']."></h5>
                                     <p class='help-block'></p><br>
                                 </div>
                             </div>";
@@ -144,9 +145,9 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                               echo "
                                 <div class='control-group form-group'>
                                     <div class='controls'>
-                                        <label><h8>Opcion ".$preg."-".$opc.":</label>
-                                        <input type=radio value='".$opc."' name ='Respuesta-".$preg."' 'required data-validation-required-message= Ingrese Respuesta /> ¿ES RESPUESTA?
-                                        <input type='text' class='form-control' name= 'Opcion-".$preg."-".$opc."' 'required data-validation-required-message= Ingrese Opcion ".$preg."-".$opc."'></h8>
+                                        <label><h8>Opcion ".$preg['preg_id']."-".$opc.":</label>
+                                        <input type=radio value='".$opc."' name ='Respuesta-".$preg['preg_id']."' 'required data-validation-required-message= Ingrese Respuesta /> ¿ES RESPUESTA?
+                                        <input type='text' class='form-control' name= 'Opcion-".$preg['preg_id']."-".$opc."' 'required data-validation-required-message= Ingrese Opcion ".$preg['preg_id']."-".$opc."'></h8>
                                         <p class='help-block'></p>
                                     </div>
                                 </div>";
@@ -158,7 +159,7 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                              ?>
                             <div id="success"></div>
                             <!-- For success/fail messages -->
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button type="submit" class="btn btn-primary">Enviar</button>
                         </form>
                     </div>
 

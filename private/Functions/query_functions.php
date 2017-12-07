@@ -198,6 +198,25 @@ function insertar_pregunta ($examen,$tema_id) {
                     $result = mysqli_query($db, $sql);
             }
 
+function editar_pregunta ($preg,$tema_id) {
+                    global $db;
+	
+					$sql = "UPDATE preguntas SET ";
+        			$sql .= "preg_nombre='".$preg['preg_nombre']."', ";
+        			$sql .= "WHERE tema_id='".$tema_id['tema_id']."'";
+                    $result = mysqli_query($db, $sql);
+            }
+
+function buscar_preg ($id) {
+        global $db;
+        $sql = "SELECT * FROM preguntas ";
+        $sql .="WHERE tema_id='". $id ."'";
+        $result = mysqli_query($db, $sql);
+        $alumnos= mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        return($alumnos);
+      }
+
 function insertar_opciones ($examen,$opc,$preg_id,$tema_id) {
               global $db;
                     $examen['opc_id']=$opc;
