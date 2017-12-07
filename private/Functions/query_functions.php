@@ -35,6 +35,7 @@ function preguntas_examen($tema){
     $o=0;
     echo "</li>";
   }
+  return ($result);
 }
 
 // Pablo
