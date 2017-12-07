@@ -24,8 +24,7 @@ $page_subtitle = 'Asignar'; ?>
 				<th>Fecha</th>
 				<th>Nota</th>
 				<th>Estado</th>
-				<th>Asignar</th>
-				<th>Respuestas</th>
+				<th>Resp. Alumno</th>
               </tr>
 			</thead>
 			<tbody>
@@ -47,10 +46,8 @@ $page_subtitle = 'Asignar'; ?>
 				
 				<?php $buscar_examen_estado = buscar_examen_estado($examen_alumno['estado_id']); ?>
 				<td><?php echo h($buscar_examen_estado['examen_estado']); ?></td>
-				  
-                <td><a href="<?php echo 'asignar_examen.php?id='.$examen_alumno['examen_id'];?>
-				<?php echo '&ida='.$buscar_alumno['alumno_id'];?>" title="Asignar"><span class="glyphicon glyphicon-pencil"></span></a></td>
-				<td><a href="<?php echo 'resultados.php?id='.$examen_alumno['examen_id'];?>" title="Respuestas"><span class="glyphicon glyphicon-search"></span></a></td>
+				
+				<td><a href="<?php echo 'resultados.php?id='.$examen_alumno['examen_id'];?>" title="Ver"><span class="glyphicon glyphicon-search"></span></a></td>
               </tr>
             <?php }; ?>
             </tbody>

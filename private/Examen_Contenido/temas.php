@@ -9,8 +9,6 @@
 <?php $materias = materias(); ?>
 <?php $temas = temas(); ?>
 	<!-- Content Row -->
-	<form action="../Examen_Contenido/nuevo_tema.php" method="post">
-	<input type="submit" value="Nuevo Tema" class="btn btn-primary"><br><br>
 		<!-- Content Column -->
 		<div class="col-md-9">
 		<!-- Pablo -->
@@ -20,7 +18,8 @@
 				<th>Materia</th>
 				<th>Tema</th>
 				<th>Editar</th>
-				<th>Crear Preguntas</th>
+				<th>Cargar Preguntas</th>
+				<th>Ver Preguntas</th>
 				</tr>
 			</thead>
 
@@ -31,12 +30,12 @@
 				<td><?php echo h($tema['tema_nombre']); ?></td>
 				<!-- Pablo -->
 				<td><a href="<?php echo '../Examen_Contenido/editar_tema.php?id='.$tema['tema_id'];?>" title="Editar"><span class="glyphicon glyphicon-pencil"></span></a></td>
-				<td><a href="<?php echo '../Examenes/nuevo_examen.php?id='.$tema['tema_id'];?>" title="Cargar Preguntas"><span class="glyphicon glyphicon-pencil"></span></a></td>
+				<td><a href="<?php echo '../Examenes/nuevo_examen.php?id='.$tema['tema_id'];?>" title="Cargar Preguntas"><span class="glyphicon glyphicon-check"></span></a></td>
+				<td><a href="<?php echo '../Examenes/ver_examen.php?id='.$tema['tema_id'];?>" title="Ver Preguntas"><span class="glyphicon glyphicon-search"></span></a></td>
 				<?php }; ?>
 			</tbody>
 		</table>
 		</div>
-	</form>
 </div>
       <!-- /.row -->
 <!-- Pablo -->

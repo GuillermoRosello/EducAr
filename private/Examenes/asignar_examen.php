@@ -9,9 +9,9 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
 <?php include(SHARED_PATH.'/private_navigation.php'); ?>
 <?php include(SHARED_PATH.'/private_sidebar.php'); ?>
 
-<?php  $ida=$_GET['ida'];
+<?php  $id=$_GET['id'];
         echo "";?>
-<?php $alumno=buscar_alumno($ida); ?>
+<?php $alumno=buscar_alumno($id); ?>
 <?php $temas = temas(); ?>
 
 
@@ -56,7 +56,7 @@ if ($_SESSION['permisos']!="ADMIN") {header('location:'.url_for('private/index.p
                             <div id="success"></div>
                             <!-- For success/fail messages -->
                             <!-- Pablo -->
-                            <a href="alumnos.php" class="btn btn-warning">Regresar</a>
+                            <a href="../Alumnos/alumnos.php" class="btn btn-warning">Regresar</a>
                             <!-- Pablo -->
                             <button type="submit" class="btn btn-primary">Guardar</button>
                         </form>

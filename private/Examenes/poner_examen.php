@@ -9,13 +9,13 @@ if (is_post_request()) {
 	$tema['mat_id'] = $_POST['mat_id'];
   	$result=asignar_tema($alumno, $tema);
       if ($result) {
-    redirect_to(url_for('/private/Examen_Contenido/temas.php'));
+    redirect_to(url_for('/private/Examenes/examenes.php'));
   }
   else {
     echo "Error";
   }
 }
 else {
-  redirect_to(url_for('/private/Examen_Contenido/temas.php'));
+  redirect_to(url_for('/private/Examenes/examenes.php'));
 }
 ?>

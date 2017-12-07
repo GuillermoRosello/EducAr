@@ -7,6 +7,7 @@
 <?php include(SHARED_PATH.'/private_navigation.php'); ?>
 <?php include(SHARED_PATH.'/private_sidebar.php'); ?>
 <?php $alumnos = alumnos(); ?>
+
 	<!-- Content Row -->
 	<form action="nuevo_alumno.php" method="post">
 	<input type="submit" value="Nuevo Alumno" class="btn btn-primary"><br><br>
